@@ -1,0 +1,281 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Encode+Sans:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+<script src="./image-slot.js"></script>
+<script src="./cfp-icon.js"></script>
+<style>
+html{scroll-behavior:smooth}
+body{margin:0;background:#0E0C16;color:#F3F1F7;font-family:'Encode Sans',system-ui,sans-serif;-webkit-font-smoothing:antialiased}
+a{color:#4FD3F0;text-decoration:none}
+a:hover{color:#FF6FB0}
+@keyframes spin{to{transform:rotate(360deg)}}
+@keyframes marquee{to{transform:translateX(-50%)}}
+@keyframes gshift{0%{background-position:0% 50%}50%{background-position:100% 50%}100%{background-position:0% 50%}}
+@keyframes pulse{0%{box-shadow:0 0 0 0 rgba(8,188,227,.6)}100%{box-shadow:0 0 0 10px rgba(8,188,227,0)}}
+@media (prefers-reduced-motion: reduce){*{animation:none!important}}
+</style>
+</helmet>
+<div style="min-height:100vh;display:flex;flex-direction:column;overflow-x:hidden">
+  <header style="position:sticky;top:14px;z-index:20;padding:0 20px">
+    <div style="max-width:1160px;margin:0 auto;padding:10px 10px 10px 16px;display:flex;align-items:center;gap:16px;flex-wrap:nowrap;background:rgba(23,20,33,.72);backdrop-filter:blur(16px);border:1px solid rgba(255,255,255,.08);border-radius:20px">
+      <a href="#inicio" style="display:flex;align-items:center;gap:10px;color:#fff;flex:none;white-space:nowrap">
+        <img src="assets/logo-cfp403.png" alt="CFP 403" style="width:38px;height:38px">
+        <span style="font-weight:800;font-size:16px">CFP N° 403</span>
+      </a>
+      <nav style="display:flex;gap:2px;margin-left:auto;min-width:0;overflow:hidden;flex-wrap:nowrap">
+        <a href="#inicio" style="color:#D9D5E2;font-weight:600;font-size:15px;padding:9px 12px;border-radius:10px;white-space:nowrap" style-hover="background:rgba(255,255,255,.07);color:#fff">Inicio</a>
+        <a href="#entornos" style="color:#D9D5E2;font-weight:600;font-size:15px;padding:9px 12px;border-radius:10px;white-space:nowrap" style-hover="background:rgba(255,255,255,.07);color:#fff">Entornos</a>
+        <a href="#trayectos" style="color:#D9D5E2;font-weight:600;font-size:15px;padding:9px 12px;border-radius:10px;white-space:nowrap" style-hover="background:rgba(255,255,255,.07);color:#fff">Trayectos</a>
+        <a href="#galeria" style="color:#D9D5E2;font-weight:600;font-size:15px;padding:9px 12px;border-radius:10px;white-space:nowrap" style-hover="background:rgba(255,255,255,.07);color:#fff">Galería</a>
+      </nav>
+      <a href="#login" style="display:flex;align-items:center;gap:8px;color:#fff;font-weight:700;font-size:15px;padding:11px 18px;border-radius:12px;background:linear-gradient(110deg,#D1106F,#8A4C8F 50%,#0A8FB0);background-size:200% 100%;transition:background-position .5s;flex:none;white-space:nowrap" style-hover="color:#fff;background-position:100% 0">
+        <cfp-icon glyph="assets/icons/log-in.svg" style="display:block;width:18px;height:18px;"></cfp-icon>
+        Iniciar sesión
+      </a>
+    </div>
+  </header>
+
+  <section id="inicio" ref="{{ heroRef }}" onMouseMove="{{ onMove }}" style="position:relative;margin-top:-66px;padding:150px 24px 64px;display:flex;flex-direction:column;align-items:center;text-align:center;gap:28px;background:radial-gradient(640px circle at var(--mx,50%) var(--my,30%),rgba(229,23,123,.22),transparent 60%),radial-gradient(700px circle at 85% 80%,rgba(8,188,227,.16),transparent 60%)">
+    <div data-reveal="" style="position:relative;width:176px;height:176px;display:grid;place-items:center">
+      <div style="position:absolute;inset:0;border-radius:50%;background:conic-gradient(from 0deg,#E5177B,#8A4C8F,#3F79A6,#08BCE3,#E5177B);animation:spin 10s linear infinite;filter:blur(1px)"></div>
+      <div style="position:absolute;inset:5px;border-radius:50%;background:#0E0C16"></div>
+      <img src="assets/logo-cfp403.png" alt="" style="position:relative;width:146px;height:146px">
+    </div>
+    <div data-reveal="" data-delay="80" style="display:flex;align-items:center;gap:10px;font-size:14px;font-weight:700;color:#BDEFFB;background:rgba(8,188,227,.1);border:1px solid rgba(8,188,227,.3);padding:8px 14px;border-radius:999px">
+      <span style="width:8px;height:8px;border-radius:50%;background:#08BCE3;animation:pulse 1.6s ease-out infinite"></span>
+      Inscripciones 2026 abiertas
+    </div>
+    <h1 data-reveal="" data-delay="140" style="margin:0;font-size:clamp(44px,7vw,96px);line-height:.98;font-weight:800;letter-spacing:-0.035em;max-width:960px;text-wrap:balance">Tu oficio empieza <span style="background:linear-gradient(90deg,#FF4FA0,#B27CC0 40%,#4FA7D8 70%,#2FD2F2);background-size:200% 100%;animation:gshift 8s ease infinite;-webkit-background-clip:text;background-clip:text;color:transparent">acá.</span></h1>
+    <p data-reveal="" data-delay="200" style="margin:0;font-size:20px;line-height:1.55;color:#C4BFD0;max-width:600px;text-wrap:pretty">Formación profesional en Mercedes con cursos actualizados y certificación oficial para acceder a tu próximo empleo.</p>
+    <div data-reveal="" data-delay="260" style="display:flex;gap:12px;flex-wrap:wrap;justify-content:center">
+      <a href="#trayectos" style="display:flex;align-items:center;gap:10px;background:#fff;color:#0E0C16;font-weight:800;font-size:16px;padding:15px 24px;border-radius:14px;transition:transform .2s" style-hover="color:#0E0C16;transform:translateY(-2px)">
+        Ver trayectos
+        <cfp-icon glyph="assets/icons/arrow-right.svg" style="display:block;width:18px;height:18px;"></cfp-icon>
+      </a>
+      <a href="#login" style="display:flex;align-items:center;gap:10px;color:#fff;font-weight:700;font-size:16px;padding:15px 24px;border-radius:14px;border:1px solid rgba(255,255,255,.2);transition:background .2s" style-hover="color:#fff;background:rgba(255,255,255,.08)">
+        <cfp-icon glyph="assets/icons/graduation-cap.svg" style="display:block;width:18px;height:18px;"></cfp-icon>
+        Aula virtual
+      </a>
+    </div>
+  </section>
+
+  <div style="position:relative;padding:8px 0 72px;-webkit-mask-image:linear-gradient(90deg,transparent,#000 12%,#000 88%,transparent);mask-image:linear-gradient(90deg,transparent,#000 12%,#000 88%,transparent)">
+    <div style="display:flex;gap:12px;width:max-content;animation:marquee 42s linear infinite">
+      <sc-for list="{{ marquee }}" as="m" hint-placeholder-count="8">
+        <div style="display:flex;align-items:center;gap:10px;padding:12px 18px;border-radius:14px;background:#17141F;border:1px solid rgba(255,255,255,.07);font-weight:700;font-size:15px;white-space:nowrap">
+          <cfp-icon glyph="{{ m.icon }}" style="display:block;width:18px;height:18px;color:{{ m.color }};"></cfp-icon>{{ m.name }}
+        </div>
+      </sc-for>
+    </div>
+  </div>
+
+  <section id="entornos" style="max-width:1160px;width:100%;box-sizing:border-box;margin:0 auto;padding:0 24px 96px;display:flex;flex-wrap:wrap;gap:16px">
+    <div data-reveal="" style="flex:2 1 480px;min-width:0;border-radius:28px;padding:36px;background:linear-gradient(140deg,#251B33,#17141F 60%);border:1px solid rgba(255,255,255,.07);display:flex;flex-direction:column;gap:20px">
+      <div style="display:flex;align-items:center;gap:10px;font-size:13px;font-weight:800;letter-spacing:.12em;text-transform:uppercase;color:#FF8CC0">
+        <cfp-icon glyph="assets/icons/target.svg" style="display:block;width:18px;height:18px;"></cfp-icon>Nuestra misión
+      </div>
+      <p style="margin:0;font-size:clamp(22px,2.4vw,30px);line-height:1.3;font-weight:600;text-wrap:pretty">Transformamos el conocimiento en experiencias reales: aprendizaje práctico, proyectos concretos y vínculo con el sector productivo para una inserción laboral rápida y efectiva.</p>
+      <a href="#galeria" style="display:flex;align-items:center;gap:8px;font-weight:700;font-size:16px;margin-top:auto">Ver proyectos de alumnos
+        <cfp-icon glyph="assets/icons/arrow-up-right.svg" style="display:block;width:18px;height:18px;"></cfp-icon>
+      </a>
+    </div>
+    <div data-reveal="" data-delay="100" style="flex:1 1 320px;min-width:0;border-radius:28px;padding:28px;background:#17141F;border:1px solid rgba(255,255,255,.07);display:flex;flex-direction:column;gap:4px">
+      <div style="display:flex;align-items:center;gap:10px;font-weight:800;font-size:18px;margin-bottom:10px">
+        <cfp-icon glyph="assets/icons/bell.svg" style="display:block;width:20px;height:20px;color:#4FD3F0;"></cfp-icon>Agenda y novedades
+      </div>
+      <sc-for list="{{ agenda }}" as="ev" hint-placeholder-count="3">
+        <div style="display:flex;gap:14px;padding:12px 0;border-top:1px solid rgba(255,255,255,.07)">
+          <div style="flex:none;width:52px;display:flex;flex-direction:column;align-items:center;justify-content:center;border-radius:12px;background:rgba(255,255,255,.05);padding:6px 0">
+            <span style="font-size:20px;font-weight:800;line-height:1">{{ ev.d }}</span>
+            <span style="font-size:12px;font-weight:700;color:#FF8CC0;text-transform:uppercase">{{ ev.m }}</span>
+          </div>
+          <div style="display:flex;flex-direction:column;gap:3px">
+            <span style="font-weight:700;font-size:16px">{{ ev.t }}</span>
+            <span style="font-size:14px;color:#B3AEC0;line-height:1.4">{{ ev.s }}</span>
+          </div>
+        </div>
+      </sc-for>
+    </div>
+    <sc-for list="{{ entornos }}" as="en" hint-placeholder-count="3">
+      <div data-reveal="" style="flex:1 1 300px;min-width:0;position:relative;height:300px;border-radius:28px;overflow:hidden;border:1px solid rgba(255,255,255,.07);background:#17141F">
+        <image-slot id="{{ en.slot }}" shape="rect" placeholder="{{ en.ph }}"></image-slot>
+        <div style="position:absolute;top:14px;left:14px;right:14px;display:flex;align-items:center;gap:10px;padding:10px 14px;border-radius:14px;background:rgba(14,12,22,.78);backdrop-filter:blur(10px);pointer-events:none">
+          <cfp-icon glyph="{{ en.icon }}" style="display:block;width:20px;height:20px;flex:none;color:{{ en.color }};"></cfp-icon>
+          <span style="display:flex;flex-direction:column">
+            <span style="font-weight:800;font-size:16px">{{ en.t }}</span>
+            <span style="font-size:13px;color:#C4BFD0;line-height:1.35">{{ en.s }}</span>
+          </span>
+        </div>
+      </div>
+    </sc-for>
+  </section>
+
+  <section id="trayectos" style="max-width:1160px;width:100%;box-sizing:border-box;margin:0 auto;padding:0 24px 104px;display:flex;flex-direction:column;gap:28px">
+    <div data-reveal="" style="display:flex;flex-direction:column;align-items:center;text-align:center;gap:20px">
+      <h2 style="margin:0;font-size:clamp(34px,4.6vw,56px);font-weight:800;letter-spacing:-0.025em">Trayectos formativos</h2>
+      <div style="display:flex;gap:4px;flex-wrap:wrap;justify-content:center;padding:5px;border-radius:16px;background:#17141F;border:1px solid rgba(255,255,255,.07)">
+        <sc-for list="{{ cats }}" as="c" hint-placeholder-count="4">
+          <button onClick="{{ c.onClick }}" style="font-family:inherit;font-size:15px;font-weight:700;padding:10px 16px;border-radius:12px;border:0;cursor:pointer;background:{{ c.bg }};color:{{ c.fg }};transition:all .25s">{{ c.label }}</button>
+        </sc-for>
+      </div>
+    </div>
+    <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(min(100%,260px),1fr));gap:14px">
+      <sc-for list="{{ cursos }}" as="cu" hint-placeholder-count="6">
+        <button data-reveal="" onClick="{{ cu.onOpen }}" style="font-family:inherit;text-align:left;cursor:pointer;color:#F3F1F7;border:1px solid rgba(255,255,255,.08);background:#17141F;border-radius:22px;padding:22px;display:flex;flex-direction:column;gap:18px;min-height:220px;transition:transform .25s" style-hover="transform:translateY(-4px);border-color:transparent;background:linear-gradient(#1C1828,#1C1828) padding-box,linear-gradient(130deg,#E5177B,#8A4C8F,#08BCE3) border-box">
+          <span style="display:grid;place-items:center;width:50px;height:50px;border-radius:15px;background:{{ cu.tint }};color:{{ cu.color }}"><cfp-icon glyph="{{ cu.icon }}" style="display:block;width:24px;height:24px;"></cfp-icon></span>
+          <span style="display:flex;flex-direction:column;gap:6px">
+            <span style="font-size:13px;font-weight:700;color:{{ cu.color }}">{{ cu.cat }}</span>
+            <span style="font-weight:800;font-size:21px;line-height:1.2">{{ cu.name }}</span>
+          </span>
+          <span style="display:flex;gap:8px;flex-wrap:wrap;margin-top:auto">
+            <span style="display:flex;align-items:center;gap:6px;font-size:13px;font-weight:600;color:#C4BFD0;padding:6px 10px;border-radius:999px;background:rgba(255,255,255,.06)"><cfp-icon glyph="assets/icons/clock.svg" style="display:block;width:14px;height:14px;"></cfp-icon>{{ cu.dur }}</span>
+            <span style="display:flex;align-items:center;gap:6px;font-size:13px;font-weight:600;color:#C4BFD0;padding:6px 10px;border-radius:999px;background:rgba(255,255,255,.06)"><cfp-icon glyph="assets/icons/calendar.svg" style="display:block;width:14px;height:14px;"></cfp-icon>{{ cu.dias }}</span>
+          </span>
+        </button>
+      </sc-for>
+    </div>
+  </section>
+
+  <footer style="background:#000;border-top:1px solid rgba(255,255,255,.08)">
+    <div style="max-width:1160px;margin:0 auto;padding:56px 24px 24px;display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,230px),1fr));gap:36px">
+      <div style="display:flex;flex-direction:column;gap:14px">
+        <img src="assets/logo-cfp403.png" alt="CFP 403" style="width:60px;height:60px">
+        <p style="margin:0;font-size:15px;line-height:1.5;color:#B3AEC0">Formación profesional orientada al futuro digital y la industria local.</p>
+      </div>
+      <div style="display:flex;flex-direction:column;gap:12px">
+        <span style="display:flex;gap:10px;font-size:15px;color:#D9D5E2;line-height:1.4"><cfp-icon glyph="assets/icons/map-pin.svg" style="display:block;width:18px;height:18px;flex:none;color:#FF8CC0;"></cfp-icon>Calle 32 N° 1220 entre 49 y 51, Mercedes</span>
+        <a href="mailto:cfp403mercedes@abc.gob.ar" style="display:flex;gap:10px;font-size:15px;color:#D9D5E2"><cfp-icon glyph="assets/icons/mail.svg" style="display:block;width:18px;height:18px;flex:none;color:#C79AD0;"></cfp-icon>cfp403mercedes@abc.gob.ar</a>
+        <a href="https://www.instagram.com/cfp_mercedes/" style="display:flex;gap:10px;font-size:15px;color:#D9D5E2"><cfp-icon glyph="assets/icons/instagram.svg" style="display:block;width:18px;height:18px;flex:none;color:#4FD3F0;"></cfp-icon>@cfp_mercedes</a>
+      </div>
+      <div style="display:flex;flex-direction:column;gap:12px">
+        <a href="#galeria" style="font-size:15px;color:#D9D5E2;font-weight:600">Galería de proyectos</a>
+        <a href="#login" style="font-size:15px;color:#D9D5E2;font-weight:600">Aula virtual</a>
+        <a href="#admin" style="font-size:15px;color:#D9D5E2;font-weight:600">Acceso Dirección</a>
+      </div>
+    </div>
+    <div style="max-width:1160px;margin:0 auto;padding:8px 24px 28px;display:flex;justify-content:space-between;align-items:center;gap:20px;flex-wrap:wrap">
+      <img src="assets/pba-horizontal-negro.png" alt="Gobierno de la Provincia de Buenos Aires" style="height:64px;width:auto;max-width:100%">
+      <span style="font-size:13px;color:#8F8A9C">© 2026 CFP N° 403 de Mercedes</span>
+    </div>
+  </footer>
+
+  <sc-if value="{{ hasOpen }}" hint-placeholder-val="{{ false }}">
+    <div onClick="{{ close }}" style="position:fixed;inset:0;z-index:50;background:rgba(0,0,0,.6);backdrop-filter:blur(8px);display:flex;align-items:flex-end;justify-content:center;padding:20px 20px 0">
+      <div ref="{{ sheetRef }}" onClick="{{ stop }}" style="width:min(720px,100%);max-height:88vh;overflow:auto;background:#17141F;border:1px solid rgba(255,255,255,.1);border-bottom:0;border-radius:28px 28px 0 0;padding:14px 32px 32px;display:flex;flex-direction:column;gap:22px">
+        <div style="width:44px;height:5px;border-radius:9px;background:rgba(255,255,255,.2);align-self:center"></div>
+        <div style="display:flex;gap:16px;align-items:center">
+          <span style="display:grid;place-items:center;flex:none;width:60px;height:60px;border-radius:18px;background:{{ open.tint }};color:{{ open.color }}"><cfp-icon glyph="{{ open.iconUrl }}" style="display:block;width:28px;height:28px;"></cfp-icon></span>
+          <span style="display:flex;flex-direction:column;gap:4px;flex:1">
+            <span style="font-size:13px;font-weight:700;color:{{ open.color }}">{{ open.cat }}</span>
+            <span style="font-size:30px;font-weight:800;line-height:1.1">{{ open.name }}</span>
+          </span>
+          <button onClick="{{ close }}" aria-label="Cerrar" style="flex:none;width:44px;height:44px;border-radius:50%;border:0;background:rgba(255,255,255,.08);color:#fff;cursor:pointer;display:grid;place-items:center"><cfp-icon glyph="assets/icons/x.svg" style="display:block;width:20px;height:20px;"></cfp-icon></button>
+        </div>
+        <div style="display:flex;gap:8px;flex-wrap:wrap">
+          <span style="display:flex;align-items:center;gap:8px;font-size:14px;font-weight:600;padding:9px 14px;border-radius:999px;background:rgba(255,255,255,.06)"><cfp-icon glyph="assets/icons/map-pin.svg" style="display:block;width:16px;height:16px;color:#FF8CC0;"></cfp-icon>{{ open.sede }}</span>
+          <span style="display:flex;align-items:center;gap:8px;font-size:14px;font-weight:600;padding:9px 14px;border-radius:999px;background:rgba(255,255,255,.06)"><cfp-icon glyph="assets/icons/clock.svg" style="display:block;width:16px;height:16px;color:#C79AD0;"></cfp-icon>{{ open.dur }}</span>
+          <span style="display:flex;align-items:center;gap:8px;font-size:14px;font-weight:600;padding:9px 14px;border-radius:999px;background:rgba(255,255,255,.06)"><cfp-icon glyph="assets/icons/calendar.svg" style="display:block;width:16px;height:16px;color:#4FD3F0;"></cfp-icon>{{ open.dias }}</span>
+        </div>
+        <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,260px),1fr));gap:20px">
+          <div style="display:flex;flex-direction:column;gap:8px"><span style="font-weight:800;font-size:17px">¿Qué vas a aprender?</span><span style="font-size:15px;line-height:1.55;color:#C4BFD0">{{ open.desc }}</span></div>
+          <div style="display:flex;flex-direction:column;gap:8px"><span style="font-weight:800;font-size:17px">Perfil profesional</span><span style="font-size:15px;line-height:1.55;color:#C4BFD0">{{ open.perfil }}</span></div>
+        </div>
+        <div style="display:flex;flex-direction:column;gap:8px"><span style="font-weight:800;font-size:17px">Requisitos</span><span style="font-size:15px;color:#C4BFD0">DNI original y copia · Estudios primarios completos</span></div>
+        <a href="#login" style="display:flex;justify-content:center;align-items:center;gap:10px;color:#fff;font-weight:800;font-size:16px;padding:17px;border-radius:16px;background:linear-gradient(110deg,#D1106F,#8A4C8F 50%,#0A8FB0)" style-hover="color:#fff">
+          <cfp-icon glyph="assets/icons/lock.svg" style="display:block;width:18px;height:18px;"></cfp-icon>
+          Iniciar inscripción segura
+        </a>
+      </div>
+    </div>
+  </sc-if>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script>
+const IC = n => n;
+const CAT = {
+  'Tecnología': { color: '#4FD3F0', tint: 'rgba(8,188,227,.14)' },
+  'Gastronomía y Servicios': { color: '#FF7DB8', tint: 'rgba(229,23,123,.16)' },
+  'Agro y Textil': { color: '#C79AD0', tint: 'rgba(138,76,143,.22)' }
+};
+const CURSOS = [
+  { name: 'Programación Web', cat: 'Tecnología', icon: 'code', dur: '1 año', dias: 'Lunes y Miércoles', desc: 'HTML, CSS y JavaScript para construir sitios y aplicaciones web desde cero.', perfil: 'Desarrollador/a web junior para emprendimientos, agencias o trabajo independiente.' },
+  { name: 'Operador/a de Informática', cat: 'Tecnología', icon: 'monitor', dur: '6 meses', dias: 'Martes y Jueves', desc: 'Manejo de sistemas operativos, ofimática, internet y herramientas de oficina.', perfil: 'Operador/a administrativo/a en oficinas, comercios e instituciones.' },
+  { name: 'Robótica', cat: 'Tecnología', icon: 'bot', dur: '1 año', dias: 'Viernes', desc: 'Electrónica, sensores y programación de placas para automatizar proyectos.', perfil: 'Auxiliar en automatización y proyectos de robótica educativa.' },
+  { name: 'Cocinero/a', cat: 'Gastronomía y Servicios', icon: 'chef-hat', dur: '1 año', dias: 'Lunes a Miércoles', desc: 'Técnicas culinarias, higiene, manipulación de alimentos y organización de cocina.', perfil: 'Cocinero/a en restaurantes, comedores y servicios de catering.' },
+  { name: 'Pastelería', cat: 'Gastronomía y Servicios', icon: 'cake-slice', dur: '8 meses', dias: 'Jueves', desc: 'Masas, cremas, decoración y costos para producción artesanal.', perfil: 'Pastelero/a en panaderías, confiterías o emprendimiento propio.' },
+  { name: 'Atención al Cliente', cat: 'Gastronomía y Servicios', icon: 'headset', dur: '4 meses', dias: 'Martes', desc: 'Comunicación, resolución de reclamos y herramientas digitales de atención.', perfil: 'Atención al público en comercios, servicios y centros de contacto.' },
+  { name: 'Huerta Agroecológica', cat: 'Agro y Textil', icon: 'sprout', dur: '1 año', dias: 'Miércoles y Viernes', desc: 'Producción agroecológica, compostaje y economía circular.', perfil: 'Productor/a hortícola y promotor/a de huertas comunitarias.' },
+  { name: 'Confección Textil', cat: 'Agro y Textil', icon: 'scissors', dur: '1 año', dias: 'Lunes y Jueves', desc: 'Moldería, corte, costura a máquina y terminaciones.', perfil: 'Operario/a textil o emprendedor/a de indumentaria.' }
+].map((c, i) => ({ ...c, id: i, sede: 'Sede Central', iconUrl: IC(c.icon), ...CAT[c.cat] }));
+const CATS = ['Todos', 'Tecnología', 'Gastronomía y Servicios', 'Agro y Textil'];
+const AGENDA = [
+  { d: '15', m: 'Mar', t: 'Apertura de inscripciones', s: 'Reservá tu vacante para los nuevos cursos.' },
+  { d: '10', m: 'Mar', t: 'Exposición anual de proyectos', s: 'Muestra de trabajos de alumnos en Sede Central.' },
+  { d: '01', m: 'Mar', t: 'Inauguración taller de robótica', s: 'Nuevo equipamiento de última generación.' }
+];
+const ENTORNOS = [
+  { slot: 'c-ent-1', ph: 'Foto del aula de informática', icon: IC('laptop'), color: '#4FD3F0', t: 'Aula de Informática', s: 'PCs de última generación para desarrollo y diseño.' },
+  { slot: 'c-ent-2', ph: 'Foto de la huerta', icon: IC('sprout'), color: '#C79AD0', t: 'Huertas Interactivas', s: 'Agroecología, economía circular y soberanía alimentaria.' },
+  { slot: 'c-ent-3', ph: 'Foto de proyectos', icon: IC('sparkles'), color: '#FF7DB8', t: 'Proyectos Destacados', s: 'Videojuegos, sitios web y diseños textiles.' }
+];
+const MARQ = [...CURSOS, ...CURSOS].map((c, i) => ({ name: c.name, icon: c.iconUrl, color: c.color, k: i }));
+
+class Component extends DCLogic {
+  state = { cat: 'Todos', open: null };
+  heroRef = React.createRef();
+  sheetRef = React.createRef();
+  componentDidMount() {
+    this.io = new IntersectionObserver(es => es.forEach(e => {
+      if (!e.isIntersecting) return;
+      e.target.animate([{ opacity: 0, transform: 'translateY(28px) scale(.98)', filter: 'blur(6px)' }, { opacity: 1, transform: 'none', filter: 'none' }],
+        { duration: 850, easing: 'cubic-bezier(.2,.7,.2,1)', delay: +(e.target.dataset.delay || 0), fill: 'backwards' });
+      this.io.unobserve(e.target);
+    }), { threshold: 0.12 });
+    this.observe();
+    this.onKey = e => { if (e.key === 'Escape') this.setState({ open: null }); };
+    window.addEventListener('keydown', this.onKey);
+  }
+  observe() {
+    document.querySelectorAll('[data-reveal]:not([data-seen])').forEach(el => { el.dataset.seen = '1'; this.io.observe(el); });
+  }
+  componentDidUpdate(pp, ps) {
+    this.observe();
+    if (!ps.open && this.state.open && this.sheetRef.current) this.sheetRef.current.animate(
+      [{ transform: 'translateY(100%)' }, { transform: 'none' }], { duration: 480, easing: 'cubic-bezier(.16,.8,.24,1)' });
+  }
+  componentWillUnmount() { this.io && this.io.disconnect(); window.removeEventListener('keydown', this.onKey); }
+  renderVals() {
+    const { cat, open } = this.state;
+    const list = cat === 'Todos' ? CURSOS : CURSOS.filter(c => c.cat === cat);
+    return {
+      heroRef: this.heroRef, sheetRef: this.sheetRef,
+      onMove: e => {
+        const el = this.heroRef.current; if (!el) return;
+        const r = el.getBoundingClientRect();
+        el.style.setProperty('--mx', ((e.clientX - r.left) / r.width * 100) + '%');
+        el.style.setProperty('--my', ((e.clientY - r.top) / r.height * 100) + '%');
+      },
+      marquee: MARQ, agenda: AGENDA, entornos: ENTORNOS,
+      cats: CATS.map(label => {
+        const on = label === cat;
+        return { label, bg: on ? '#fff' : 'transparent', fg: on ? '#0E0C16' : '#C4BFD0', onClick: () => this.setState({ cat: label }) };
+      }),
+      cursos: list.map(c => ({ ...c, icon: c.iconUrl, onOpen: () => this.setState({ open: c }) })),
+      hasOpen: !!open, open: open || {},
+      close: () => this.setState({ open: null }),
+      stop: e => e.stopPropagation()
+    };
+  }
+}
+</script>
+</body>
+</html>

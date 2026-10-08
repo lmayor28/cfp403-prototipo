@@ -1,0 +1,698 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<template id="__bundler_thumbnail" data-bg-color="#87558B"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><linearGradient id="g" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#E5177B"/><stop offset=".5" stop-color="#87558B"/><stop offset="1" stop-color="#08BCE3"/></linearGradient></defs><rect width="100" height="100" fill="url(#g)"/><circle cx="50" cy="50" r="20" fill="#fff"/><text x="50" y="55" text-anchor="middle" font-family="sans-serif" font-weight="800" font-size="13" fill="#14121F">403</text></svg></template>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Encode+Sans:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+<script src="./image-slot.js"></script>
+<script src="./cfp-icon.js"></script>
+<style>
+html{scroll-behavior:smooth}
+body{margin:0;background:#fff;color:#14121F;font-family:'Encode Sans',system-ui,sans-serif;-webkit-font-smoothing:antialiased}
+a{color:#C3126A;text-decoration:none}
+a:hover{color:#0A8FB0}
+@keyframes gshift{0%{background-position:0% 50%}50%{background-position:100% 50%}100%{background-position:0% 50%}}
+@keyframes floaty{0%,100%{transform:translateY(0)}50%{transform:translateY(-12px)}}
+@keyframes blink{0%,100%{opacity:1}50%{opacity:0}}
+@keyframes spin{to{transform:rotate(360deg)}}
+@keyframes marquee{to{transform:translateX(-50%)}}
+@keyframes shine{0%{transform:translateX(-120%) skewX(-20deg)}60%,100%{transform:translateX(320%) skewX(-20deg)}}
+@keyframes orb{0%,100%{transform:translate(0,0) scale(1)}33%{transform:translate(30px,-20px) scale(1.1)}66%{transform:translate(-20px,25px) scale(.95)}}
+@keyframes pulse{0%{box-shadow:0 0 0 0 rgba(229,23,123,.55)}100%{box-shadow:0 0 0 10px rgba(229,23,123,0)}}
+.nav-toggle{position:relative}
+.nav-toggle-lines{position:relative;display:block;width:22px;height:22px;transition:transform .35s cubic-bezier(.2,.8,.2,1)}
+.nav-toggle-lines span{position:absolute;left:0;width:22px;height:2px;border-radius:2px;background:currentColor;transition:transform .35s cubic-bezier(.2,.8,.2,1),opacity .2s}
+.nav-toggle-lines span:nth-child(1){top:4px}
+.nav-toggle-lines span:nth-child(2){top:10px}
+.nav-toggle-lines span:nth-child(3){top:16px}
+.nav-toggle[aria-expanded="true"] .nav-toggle-lines{transform:rotate(90deg)}
+.nav-toggle[aria-expanded="true"] .nav-toggle-lines span:nth-child(1){transform:translateY(6px) rotate(45deg)}
+.nav-toggle[aria-expanded="true"] .nav-toggle-lines span:nth-child(2){opacity:0;transform:scaleX(.4)}
+.nav-toggle[aria-expanded="true"] .nav-toggle-lines span:nth-child(3){transform:translateY(-6px) rotate(-45deg)}
+.nav-toggle:active .nav-toggle-lines{scale:.9}
+.orbit-link:focus-visible{outline:3px solid #fff;outline-offset:5px;border-radius:18px}
+.orbit-link:hover .orbit-card,.orbit-link:focus-visible .orbit-card{transform:translateY(-3px) scale(1.04);box-shadow:0 0 0 3px rgba(255,255,255,.25),0 18px 32px -12px rgba(20,18,31,.5)}
+@media (prefers-reduced-motion: reduce){html{scroll-behavior:auto}*{animation:none!important;transition:none!important}}
+</style>
+</helmet>
+<div style="min-height:100vh;display:flex;flex-direction:column;overflow-x:clip">
+  <div style="height:5px;background:linear-gradient(90deg,#E5177B,#87558B 35%,#3F79A6 65%,#08BCE3);background-size:200% 100%;animation:gshift 8s ease infinite"></div>
+
+  <header ref="{{ headerRef }}" style="position:sticky;top:0;z-index:30;padding:{{ hdrPad }};background:{{ hdrBg }};border-bottom:1px solid {{ hdrBd }};backdrop-filter:{{ hdrBlur }};-webkit-backdrop-filter:{{ hdrBlur }};transition:padding .5s cubic-bezier(.2,.8,.2,1),background .4s,border-color .4s">
+    <div style="position:relative;overflow:hidden;max-width:{{ pillMax }};margin:0 auto;padding:{{ pillPad }};display:flex;align-items:center;gap:16px;flex-wrap:nowrap;background:{{ pillBg }};border:1px solid {{ pillBd }};border-radius:{{ pillRad }};box-shadow:{{ pillShadow }};backdrop-filter:{{ pillBlur }};-webkit-backdrop-filter:{{ pillBlur }};transition:max-width .6s cubic-bezier(.2,.8,.2,1),padding .5s cubic-bezier(.2,.8,.2,1),border-radius .5s cubic-bezier(.2,.8,.2,1),background .4s,border-color .4s,box-shadow .5s">
+      <a href="#inicio" onClick="{{ navGo }}" aria-label="CFP N° 403 Mercedes" style="display:flex;align-items:center;gap:{{ brandGap }};color:#14121F;flex:none;min-width:0;transition:gap .5s cubic-bezier(.2,.8,.2,1)">
+        <img ref="{{ logoRef }}" src="assets/logo-cfp403.png" alt="CFP 403" style="width:{{ logoSize }};height:{{ logoSize }};flex:none;transition:width .5s cubic-bezier(.2,.8,.2,1),height .5s cubic-bezier(.2,.8,.2,1)">
+        <span style="display:flex;flex-direction:column;line-height:1.1;min-width:0;overflow:hidden;max-width:{{ txtMax }};opacity:{{ txtOp }};transform:{{ txtTf }};filter:{{ txtBlur }};transition:max-width .55s cubic-bezier(.2,.8,.2,1),opacity .35s,transform .5s cubic-bezier(.2,.8,.2,1),filter .4s">
+          <span style="font-weight:800;font-size:17px;white-space:nowrap">CFP N° 403</span>
+          <span style="font-size:13px;color:#534A47;font-weight:500;white-space:nowrap">Mercedes · Formación Profesional</span>
+        </span>
+      </a>
+      <sc-if value="{{ wide }}" hint-placeholder-val="{{ true }}">
+        <nav ref="{{ navRef }}" style="position:relative;display:flex;gap:2px;margin-left:auto;flex-wrap:nowrap">
+          <div ref="{{ indRef }}" aria-hidden="true" style="position:absolute;top:0;bottom:0;left:0;width:0;border-radius:999px;background:#F1EEF4;opacity:0;pointer-events:none;transition:left .45s cubic-bezier(.3,1.3,.5,1),width .45s cubic-bezier(.3,1.3,.5,1),opacity .3s"></div>
+          <a data-nav="inicio" href="#inicio" onClick="{{ navGo }}" style="position:relative;z-index:1;color:#14121F;font-weight:600;font-size:15px;padding:10px 13px;border-radius:999px;white-space:nowrap;transition:color .3s" style-hover="color:#C3126A">Inicio</a>
+          <a data-nav="entornos" href="#entornos" onClick="{{ navGo }}" style="position:relative;z-index:1;color:#14121F;font-weight:600;font-size:15px;padding:10px 13px;border-radius:999px;white-space:nowrap;transition:color .3s" style-hover="color:#C3126A">Entornos</a>
+          <a data-nav="trayectos" href="#trayectos" onClick="{{ navGo }}" style="position:relative;z-index:1;color:#14121F;font-weight:600;font-size:15px;padding:10px 13px;border-radius:999px;white-space:nowrap;transition:color .3s" style-hover="color:#C3126A">Trayectos</a>
+          <a data-nav="galeria" href="#galeria" onClick="{{ navGo }}" style="position:relative;z-index:1;color:#14121F;font-weight:600;font-size:15px;padding:10px 13px;border-radius:999px;white-space:nowrap;transition:color .3s" style-hover="color:#C3126A">Galería</a>
+        </nav>
+        <a href="#login" style="display:flex;align-items:center;gap:8px;background:#14121F;color:#fff;font-weight:700;font-size:15px;padding:{{ btnPad }};border-radius:{{ btnRad }};transition:transform .2s,border-radius .5s cubic-bezier(.2,.8,.2,1),padding .5s cubic-bezier(.2,.8,.2,1),background .3s;flex:none;white-space:nowrap" style-hover="color:#fff;transform:translateY(-2px);background:#D1106F">
+          <cfp-icon glyph="assets/icons/log-in.svg" style="display:block;width:18px;height:18px;"></cfp-icon>
+          Iniciar sesión
+        </a>
+      </sc-if>
+      <sc-if value="{{ narrow }}" hint-placeholder-val="{{ false }}">
+        <button class="nav-toggle" onClick="{{ toggleNav }}" aria-label="{{ navLabel }}" aria-expanded="{{ navOpenStr }}" style="margin-left:auto;flex:none;width:{{ menuBtn }};height:{{ menuBtn }};border-radius:{{ menuBtnRad }};border:1.5px solid #DADDE3;background:{{ navBtnBg }};color:{{ navBtnFg }};cursor:pointer;display:grid;place-items:center;transition:background .2s,color .2s,border-radius .5s cubic-bezier(.2,.8,.2,1),width .5s,height .5s">
+          <span class="nav-toggle-lines" aria-hidden="true"><span></span><span></span><span></span></span>
+        </button>
+      </sc-if>
+      <div aria-hidden="true" style="position:absolute;left:0;right:0;bottom:0;height:3px;opacity:{{ progOp }};transition:opacity .4s;pointer-events:none">
+        <div ref="{{ progRef }}" style="height:100%;width:100%;transform-origin:left;transform:scaleX(0);background:linear-gradient(90deg,#E5177B,#87558B 35%,#3F79A6 65%,#08BCE3)"></div>
+      </div>
+    </div>
+    <sc-if value="{{ navOpen }}" hint-placeholder-val="{{ false }}">
+      <div ref="{{ mnavRef }}" style="border-top:1px solid #ECEEF2;background:rgba(255,255,255,.86);backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);box-shadow:0 30px 40px -30px rgba(20,18,31,.35);margin:{{ mnavMargin }};max-width:{{ pillMax }};border-radius:{{ mnavRad }};overflow:hidden">
+        <nav style="padding:12px clamp(16px,4vw,24px) 20px;display:flex;flex-direction:column;gap:2px">
+          <a data-mlink="" href="#inicio" onClick="{{ navGo }}" style="display:flex;align-items:center;gap:14px;min-height:52px;padding:6px 12px;border-radius:14px;color:#14121F;font-weight:700;font-size:17px" style-hover="background:#F3F4F7;color:#14121F">
+            <cfp-icon glyph="assets/icons/house.svg" style="display:block;width:22px;height:22px;color:#87558B;"></cfp-icon>Inicio
+            <cfp-icon glyph="assets/icons/chevron-right.svg" style="display:block;width:18px;height:18px;margin-left:auto;color:#9A95A3;"></cfp-icon>
+          </a>
+          <a data-mlink="" href="#entornos" onClick="{{ navGo }}" style="display:flex;align-items:center;gap:14px;min-height:52px;padding:6px 12px;border-radius:14px;color:#14121F;font-weight:700;font-size:17px" style-hover="background:#F3F4F7;color:#14121F">
+            <cfp-icon glyph="assets/icons/laptop.svg" style="display:block;width:22px;height:22px;color:#87558B;"></cfp-icon>Entornos
+            <cfp-icon glyph="assets/icons/chevron-right.svg" style="display:block;width:18px;height:18px;margin-left:auto;color:#9A95A3;"></cfp-icon>
+          </a>
+          <a data-mlink="" href="#trayectos" onClick="{{ navGo }}" style="display:flex;align-items:center;gap:14px;min-height:52px;padding:6px 12px;border-radius:14px;color:#14121F;font-weight:700;font-size:17px" style-hover="background:#F3F4F7;color:#14121F">
+            <cfp-icon glyph="assets/icons/book-open.svg" style="display:block;width:22px;height:22px;color:#87558B;"></cfp-icon>Trayectos formativos
+            <cfp-icon glyph="assets/icons/chevron-right.svg" style="display:block;width:18px;height:18px;margin-left:auto;color:#9A95A3;"></cfp-icon>
+          </a>
+          <a data-mlink="" href="#agenda" onClick="{{ navGo }}" style="display:flex;align-items:center;gap:14px;min-height:52px;padding:6px 12px;border-radius:14px;color:#14121F;font-weight:700;font-size:17px" style-hover="background:#F3F4F7;color:#14121F">
+            <cfp-icon glyph="assets/icons/calendar-days.svg" style="display:block;width:22px;height:22px;color:#87558B;"></cfp-icon>Agenda
+            <cfp-icon glyph="assets/icons/chevron-right.svg" style="display:block;width:18px;height:18px;margin-left:auto;color:#9A95A3;"></cfp-icon>
+          </a>
+          <a data-mlink="" href="#galeria" onClick="{{ navGo }}" style="display:flex;align-items:center;gap:14px;min-height:52px;padding:6px 12px;border-radius:14px;color:#14121F;font-weight:700;font-size:17px" style-hover="background:#F3F4F7;color:#14121F">
+            <cfp-icon glyph="assets/icons/image.svg" style="display:block;width:22px;height:22px;color:#87558B;"></cfp-icon>Galería
+            <cfp-icon glyph="assets/icons/chevron-right.svg" style="display:block;width:18px;height:18px;margin-left:auto;color:#9A95A3;"></cfp-icon>
+          </a>
+          <a data-mlink="" href="#login" style="display:flex;justify-content:center;align-items:center;gap:10px;margin-top:10px;min-height:52px;background:#14121F;color:#fff;font-weight:700;font-size:16px;border-radius:14px" style-hover="color:#fff">
+            <cfp-icon glyph="assets/icons/log-in.svg" style="display:block;width:18px;height:18px;"></cfp-icon>Iniciar sesión
+          </a>
+        </nav>
+      </div>
+    </sc-if>
+  </header>
+
+  <section id="inicio" style="max-width:1200px;width:100%;box-sizing:border-box;margin:0 auto;padding:72px 24px 56px;display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,440px),1fr));gap:56px;align-items:center">
+    <div style="display:flex;flex-direction:column;gap:24px">
+      <div data-reveal="" style="display:flex;align-items:center;gap:10px;align-self:flex-start;background:#FDF0F6;color:#B0105E;font-weight:700;font-size:14px;padding:8px 14px;border-radius:999px">
+        <span style="width:8px;height:8px;border-radius:50%;background:#E5177B;animation:pulse 1.6s ease-out infinite"></span>
+        Inscripciones 2026 abiertas
+      </div>
+      <h1 data-reveal="" data-delay="80" aria-label="Formación Profesional" style="margin:0;font-size:clamp(38px,5vw,64px);line-height:1.04;font-weight:800;letter-spacing:-0.02em;display:flex;flex-direction:column">
+        <span>Formación Profesional</span>
+        <span ref="{{ typingRef }}" style="position:relative;display:block;min-height:2.08em;font-size:.82em;line-height:1.04;margin-top:.12em"><span ref="{{ wordRef }}" style="background:linear-gradient(90deg,#E5177B,#87558B 50%,#08BCE3);-webkit-background-clip:text;background-clip:text;color:transparent;-webkit-box-decoration-break:clone;box-decoration-break:clone"></span><span ref="{{ caretRef }}" aria-hidden="true" style="position:absolute;left:0;top:0;display:block;width:.08em;height:.9em;margin-left:.06em;border-radius:2px;background:#D1106F;pointer-events:none;transition:transform 90ms cubic-bezier(.2,.7,.2,1);animation:blink 1s steps(1) infinite"></span></span>
+      </h1>
+      <p data-reveal="" data-delay="160" style="margin:0;font-size:20px;line-height:1.55;color:#4A4553;max-width:520px;text-wrap:pretty">Impulsá tu futuro con cursos actualizados y certificación oficial para acceder a tu próximo empleo.</p>
+      <div data-reveal="" data-delay="240" style="display:flex;gap:12px;flex-wrap:wrap">
+        <a href="#trayectos" style="display:flex;align-items:center;gap:10px;background:#D1106F;color:#fff;font-weight:700;font-size:16px;padding:15px 22px;border-radius:14px;box-shadow:0 10px 24px -10px rgba(209,16,111,.6);transition:transform .2s,box-shadow .2s" style-hover="color:#fff;transform:translateY(-2px);box-shadow:0 16px 30px -12px rgba(209,16,111,.7)">
+          Ver trayectos formativos
+          <cfp-icon glyph="assets/icons/arrow-right.svg" style="display:block;width:18px;height:18px;"></cfp-icon>
+        </a>
+        <a href="#login" style="display:flex;align-items:center;gap:10px;background:#fff;color:#14121F;font-weight:700;font-size:16px;padding:15px 22px;border-radius:14px;border:1.5px solid #DADDE3;transition:border-color .2s" style-hover="color:#14121F;border-color:#14121F">
+          <cfp-icon glyph="assets/icons/graduation-cap.svg" style="display:block;width:18px;height:18px;"></cfp-icon>
+          Aula virtual
+        </a>
+      </div>
+    </div>
+    <div data-reveal="" data-delay="200" ref="{{ panelRef }}" style="position:relative;border-radius:32px;background:linear-gradient(125deg,#E5177B,#87558B 35%,#3F79A6 65%,#08BCE3);background-size:220% 220%;animation:gshift 12s ease infinite;overflow:hidden">
+      <div style="position:absolute;inset:0;background:radial-gradient(circle at 70% 20%,rgba(255,255,255,.28),transparent 45%);pointer-events:none"></div>
+      <sc-if value="{{ orbit }}" hint-placeholder-val="{{ true }}">
+        <nav aria-label="Menú rápido" style="position:relative;aspect-ratio:{{ orbAspect }};display:grid;place-items:center">
+          <div style="position:absolute;width:{{ ringW }};aspect-ratio:1;border-radius:50%;border:1.5px dashed rgba(255,255,255,.5);animation:spin 60s linear infinite;pointer-events:none"></div>
+          <div style="position:absolute;width:54%;aspect-ratio:1;border-radius:50%;border:1px solid rgba(255,255,255,.22);pointer-events:none"></div>
+          <button onClick="{{ toggle }}" aria-expanded="{{ menuOpenStr }}" aria-label="Abrir o cerrar menú" style="position:relative;z-index:2;width:{{ logoW }};aspect-ratio:1;border:0;padding:0;background:transparent;cursor:pointer;display:grid;place-items:center;border-radius:50%;transition:transform .35s cubic-bezier(.2,.7,.2,1)" style-hover="transform:scale(1.05)" style-active="transform:scale(.96)">
+            <img src="assets/logo-cfp403.png" alt="CFP 403" style="width:100%;filter:drop-shadow(0 24px 40px rgba(20,18,31,.35));animation:floaty 6s ease-in-out infinite">
+          </button>
+          <div style="position:absolute;left:50%;top:{{ hintTop }};transform:translateX(-50%);z-index:2;display:flex;align-items:center;gap:6px;white-space:nowrap;background:rgba(20,18,31,.55);color:#fff;font-size:{{ hintFs }};font-weight:700;padding:6px 12px;border-radius:999px;pointer-events:none;opacity:{{ hintOp }};transition:opacity .4s">
+            <cfp-icon glyph="assets/icons/mouse-pointer-click.svg" style="display:block;width:14px;height:14px;"></cfp-icon>{{ hint }}
+          </div>
+          <sc-for list="{{ menu }}" as="it" hint-placeholder-count="6">
+            <a class="orbit-link" href="{{ it.href }}" onClick="{{ it.go }}" tabindex="{{ it.tab }}" style="position:absolute;z-index:3;left:{{ it.x }}%;top:{{ it.y }}%;transform:translate(-50%,-50%) scale({{ it.sc }});opacity:{{ it.op }};pointer-events:{{ it.pe }};transition:left .7s cubic-bezier(.2,.9,.25,1.15) {{ it.d }}s,top .7s cubic-bezier(.2,.9,.25,1.15) {{ it.d }}s,opacity .45s ease {{ it.d }}s,transform .7s cubic-bezier(.2,.9,.25,1.15) {{ it.d }}s;display:flex;flex-direction:column;align-items:center;gap:8px;color:#14121F;text-decoration:none">
+              <span style="display:block;animation:floaty 7s ease-in-out {{ it.fd }}s infinite">
+                <span class="orbit-card" style="box-sizing:border-box;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:7px;width:{{ it.cardW }};min-height:{{ it.cardH }};padding:{{ it.cardPad }};border-radius:18px;background:rgba(255,255,255,.96);box-shadow:0 14px 28px -12px rgba(20,18,31,.45);transition:transform .25s,box-shadow .25s">
+                  <cfp-icon glyph="{{ it.icon }}" style="display:block;width:{{ it.ico }};height:{{ it.ico }};color:{{ it.color }};"></cfp-icon>
+                  <span style="color:#14121F;font-size:{{ it.lfs }};font-weight:800;line-height:1.15;text-align:center">{{ it.label }}</span>
+                </span>
+              </span>
+            </a>
+          </sc-for>
+        </nav>
+      </sc-if>
+    </div>
+  </section>
+
+  <section style="max-width:1200px;width:100%;box-sizing:border-box;margin:0 auto;padding:0 24px 80px;display:flex;flex-wrap:wrap;gap:20px">
+    <div data-reveal="" style="flex:2 1 520px;min-width:0;background:#F6F7F9;border-radius:28px;padding:36px;display:flex;flex-direction:column;gap:18px">
+      <div style="font-size:13px;font-weight:800;letter-spacing:.12em;text-transform:uppercase;color:#87558B">Nuestra misión</div>
+      <p style="margin:0;font-size:clamp(22px,2.4vw,30px);line-height:1.3;font-weight:600;text-wrap:pretty">Impulsamos el desarrollo de nuestra comunidad <span style="color:#D1106F">transformando el conocimiento en experiencias reales</span>, con aprendizaje práctico alineado al sector productivo.</p>
+      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));gap:12px;margin-top:8px">
+        <div style="display:flex;align-items:center;gap:12px;background:#fff;border-radius:16px;padding:14px 16px;font-weight:700;font-size:15px">
+          <cfp-icon glyph="assets/icons/hammer.svg" style="display:block;width:22px;height:22px;flex:none;color:#D1106F;"></cfp-icon>Aprendizaje práctico
+        </div>
+        <div style="display:flex;align-items:center;gap:12px;background:#fff;border-radius:16px;padding:14px 16px;font-weight:700;font-size:15px">
+          <cfp-icon glyph="assets/icons/factory.svg" style="display:block;width:22px;height:22px;flex:none;color:#87558B;"></cfp-icon>Sector productivo
+        </div>
+        <div style="display:flex;align-items:center;gap:12px;background:#fff;border-radius:16px;padding:14px 16px;font-weight:700;font-size:15px">
+          <cfp-icon glyph="assets/icons/handshake.svg" style="display:block;width:22px;height:22px;flex:none;color:#0A8FB0;"></cfp-icon>Vinculación laboral
+        </div>
+      </div>
+      <a href="#galeria" style="display:flex;align-items:center;gap:8px;font-weight:700;font-size:16px;align-self:flex-start;margin-top:4px">Ver proyectos de alumnos
+        <cfp-icon glyph="assets/icons/arrow-up-right.svg" style="display:block;width:18px;height:18px;"></cfp-icon>
+      </a>
+    </div>
+    <div id="agenda" data-reveal="" data-delay="120" style="flex:1 1 320px;scroll-margin-top:96px;min-width:0;border:1.5px solid #ECEEF2;border-radius:28px;padding:28px;display:flex;flex-direction:column;gap:6px">
+      <div style="display:flex;align-items:center;gap:10px;margin-bottom:10px">
+        <cfp-icon glyph="assets/icons/calendar-days.svg" style="display:block;width:22px;height:22px;color:#14121F;"></cfp-icon>
+        <span style="font-weight:800;font-size:18px">Agenda y novedades</span>
+      </div>
+      <sc-for list="{{ agenda }}" as="ev" hint-placeholder-count="3">
+        <div style="display:flex;gap:16px;align-items:flex-start;padding:14px 10px;border-radius:14px;transition:background .2s" style-hover="background:#F6F7F9">
+          <div style="flex:none;width:54px;text-align:center;border-radius:12px;background:#14121F;color:#fff;padding:8px 0">
+            <div style="font-size:22px;font-weight:800;line-height:1">{{ ev.d }}</div>
+            <div style="font-size:12px;font-weight:700;text-transform:uppercase;letter-spacing:.06em;margin-top:2px;color:#7FE0F5">{{ ev.m }}</div>
+          </div>
+          <div style="display:flex;flex-direction:column;gap:4px">
+            <div style="font-weight:700;font-size:16px">{{ ev.t }}</div>
+            <div style="font-size:14px;line-height:1.45;color:#5B5664">{{ ev.s }}</div>
+          </div>
+        </div>
+      </sc-for>
+    </div>
+  </section>
+
+  <section id="entornos" style="background:#14121F;color:#fff;padding:88px 0">
+    <div style="max-width:1200px;margin:0 auto;padding:0 24px;display:flex;flex-direction:column;gap:36px">
+      <div data-reveal="" style="display:flex;justify-content:space-between;align-items:flex-end;gap:24px;flex-wrap:wrap">
+        <h2 style="margin:0;font-size:clamp(32px,4vw,48px);font-weight:800;letter-spacing:-0.02em">Entornos formativos</h2>
+        <p style="margin:0;max-width:420px;font-size:17px;line-height:1.5;color:#C9C6D1">Espacios equipados para aprender haciendo, desde el aula hasta la huerta.</p>
+      </div>
+      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,300px),1fr));gap:20px">
+        <sc-for list="{{ entornos }}" as="en" hint-placeholder-count="3">
+          <div data-reveal="" style="display:flex;flex-direction:column;gap:16px;background:#1F1C2C;border-radius:24px;padding:12px 12px 24px;transition:transform .3s" style-hover="transform:translateY(-6px)">
+            <div style="position:relative;height:220px;border-radius:16px;overflow:hidden">
+              <image-slot id="{{ en.slot }}" shape="rect" placeholder="{{ en.ph }}"></image-slot>
+            </div>
+            <div style="display:flex;gap:14px;padding:0 12px;align-items:flex-start">
+              <span style="display:grid;place-items:center;flex:none;width:42px;height:42px;border-radius:12px;background:linear-gradient(135deg,#E5177B,#08BCE3);color:#fff"><cfp-icon glyph="{{ en.icon }}" style="display:block;width:22px;height:22px;"></cfp-icon></span>
+              <div style="display:flex;flex-direction:column;gap:6px">
+                <div style="font-weight:800;font-size:19px">{{ en.t }}</div>
+                <div style="font-size:15px;line-height:1.5;color:#C9C6D1">{{ en.s }}</div>
+              </div>
+            </div>
+          </div>
+        </sc-for>
+      </div>
+    </div>
+  </section>
+
+  <section id="trayectos" style="max-width:1200px;width:100%;box-sizing:border-box;margin:0 auto;padding:88px 24px;display:flex;flex-direction:column;gap:32px">
+    <div data-reveal="" style="display:flex;justify-content:space-between;align-items:flex-end;gap:24px;flex-wrap:wrap">
+      <div style="display:flex;flex-direction:column;gap:10px">
+        <div style="font-size:13px;font-weight:800;letter-spacing:.12em;text-transform:uppercase;color:#87558B">Oferta educativa 2026</div>
+        <h2 style="margin:0;font-size:clamp(32px,4vw,48px);font-weight:800;letter-spacing:-0.02em">Trayectos formativos</h2>
+      </div>
+      <div style="display:flex;gap:8px;flex-wrap:wrap">
+        <sc-for list="{{ cats }}" as="c" hint-placeholder-count="4">
+          <button onClick="{{ c.onClick }}" style="display:flex;align-items:center;gap:8px;font-family:inherit;font-size:15px;font-weight:700;padding:10px 16px;border-radius:999px;cursor:pointer;border:1.5px solid {{ c.bd }};background:{{ c.bg }};color:{{ c.fg }};transition:all .2s">{{ c.label }}<span style="font-size:12px;opacity:.7">{{ c.n }}</span></button>
+        </sc-for>
+      </div>
+    </div>
+    <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(min(100%,270px),1fr));gap:18px">
+      <sc-for list="{{ cursos }}" as="cu" hint-placeholder-count="6">
+        <button data-reveal="" onClick="{{ cu.onOpen }}" style="font-family:inherit;text-align:left;cursor:pointer;background:#fff;border:1.5px solid #ECEEF2;border-radius:22px;padding:22px;display:flex;flex-direction:column;gap:16px;color:#14121F;transition:transform .25s,box-shadow .25s,border-color .25s" style-hover="transform:translateY(-4px);border-color:transparent;box-shadow:0 22px 44px -22px rgba(20,18,31,.35)">
+          <div style="display:flex;justify-content:space-between;align-items:center;width:100%">
+            <span style="display:grid;place-items:center;width:48px;height:48px;border-radius:14px;background:{{ cu.tint }};color:{{ cu.color }}"><cfp-icon glyph="{{ cu.icon }}" style="display:block;width:24px;height:24px;"></cfp-icon></span>
+            <span style="font-size:12px;font-weight:700;padding:6px 10px;border-radius:999px;background:{{ cu.tint }};color:{{ cu.color }}">{{ cu.cat }}</span>
+          </div>
+          <div style="font-weight:800;font-size:20px;line-height:1.2">{{ cu.name }}</div>
+          <div style="display:flex;flex-direction:column;gap:8px;font-size:14px;color:#5B5664;font-weight:500">
+            <span style="display:flex;align-items:center;gap:8px"><cfp-icon glyph="assets/icons/clock.svg" style="display:block;width:16px;height:16px;"></cfp-icon>{{ cu.dur }}</span>
+            <span style="display:flex;align-items:center;gap:8px"><cfp-icon glyph="assets/icons/calendar.svg" style="display:block;width:16px;height:16px;"></cfp-icon>{{ cu.dias }}</span>
+          </div>
+          <div style="display:flex;align-items:center;gap:6px;margin-top:auto;font-weight:700;font-size:15px;color:#C3126A">Ver detalle
+            <cfp-icon glyph="assets/icons/arrow-right.svg" style="display:block;width:16px;height:16px;"></cfp-icon>
+          </div>
+        </button>
+      </sc-for>
+    </div>
+  </section>
+
+  <div aria-hidden="true" style="overflow:hidden;padding:20px 0"><div style="overflow:hidden;background:linear-gradient(90deg,#E5177B,#87558B 35%,#3F79A6 65%,#08BCE3);color:#fff;padding:18px 0;transform:rotate(-1.2deg);margin:12px -20px;box-shadow:0 20px 40px -24px rgba(135,85,139,.55)">
+    <div style="display:flex;width:max-content;font-weight:800;font-size:clamp(20px,2.6vw,30px);white-space:nowrap;animation:marquee 38s linear infinite"><span style="display:flex;align-items:center;gap:28px;padding-right:28px"><span>Habilidades Digitales e I.A.</span><cfp-icon glyph="sparkles" style="display:block;width:22px;height:22px;flex:none;"></cfp-icon><span>Diseño Gráfico y Marketing Digital</span><cfp-icon glyph="sparkles" style="display:block;width:22px;height:22px;flex:none;"></cfp-icon><span>Desarrollo de Software y Videojuegos</span><cfp-icon glyph="sparkles" style="display:block;width:22px;height:22px;flex:none;"></cfp-icon><span>Desarrollo Web y Mobile</span><cfp-icon glyph="sparkles" style="display:block;width:22px;height:22px;flex:none;"></cfp-icon><span>Producción Hortícola</span><cfp-icon glyph="sparkles" style="display:block;width:22px;height:22px;flex:none;"></cfp-icon><span>Confección Textil</span><cfp-icon glyph="sparkles" style="display:block;width:22px;height:22px;flex:none;"></cfp-icon><span>Organización de Eventos</span><cfp-icon glyph="sparkles" style="display:block;width:22px;height:22px;flex:none;"></cfp-icon><span>Gastronomía</span><cfp-icon glyph="sparkles" style="display:block;width:22px;height:22px;flex:none;"></cfp-icon></span><span style="display:flex;align-items:center;gap:28px;padding-right:28px"><span>Habilidades Digitales e I.A.</span><cfp-icon glyph="sparkles" style="display:block;width:22px;height:22px;flex:none;"></cfp-icon><span>Diseño Gráfico y Marketing Digital</span><cfp-icon glyph="sparkles" style="display:block;width:22px;height:22px;flex:none;"></cfp-icon><span>Desarrollo de Software y Videojuegos</span><cfp-icon glyph="sparkles" style="display:block;width:22px;height:22px;flex:none;"></cfp-icon><span>Desarrollo Web y Mobile</span><cfp-icon glyph="sparkles" style="display:block;width:22px;height:22px;flex:none;"></cfp-icon><span>Producción Hortícola</span><cfp-icon glyph="sparkles" style="display:block;width:22px;height:22px;flex:none;"></cfp-icon><span>Confección Textil</span><cfp-icon glyph="sparkles" style="display:block;width:22px;height:22px;flex:none;"></cfp-icon><span>Organización de Eventos</span><cfp-icon glyph="sparkles" style="display:block;width:22px;height:22px;flex:none;"></cfp-icon><span>Gastronomía</span><cfp-icon glyph="sparkles" style="display:block;width:22px;height:22px;flex:none;"></cfp-icon></span></div>
+  </div></div>
+
+  <section id="inscripcion" style="max-width:1200px;width:100%;box-sizing:border-box;margin:0 auto;padding:96px 24px 88px;display:flex;flex-direction:column;gap:48px;scroll-margin-top:96px">
+    <div data-reveal="" style="display:flex;flex-direction:column;gap:10px;max-width:640px">
+      <div style="font-size:13px;font-weight:800;letter-spacing:.12em;text-transform:uppercase;color:#87558B">Cómo inscribirte</div>
+      <h2 style="margin:0;font-size:clamp(30px,3.6vw,46px);line-height:1.08;font-weight:800;letter-spacing:-0.02em;text-wrap:balance">Cuatro pasos para empezar a cursar</h2>
+    </div>
+    <div ref="{{ stepsRef }}" style="position:relative;display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,230px),1fr));gap:28px">
+      <div aria-hidden="true" style="position:absolute;left:28px;right:28px;top:28px;height:3px;border-radius:3px;background:#ECEEF2;display:{{ lineDisp }}">
+        <div ref="{{ lineRef }}" style="height:100%;border-radius:3px;transform-origin:left;transform:scaleX(0);background:linear-gradient(90deg,#E5177B,#87558B 35%,#3F79A6 65%,#08BCE3)"></div>
+      </div>
+      <sc-for list="{{ steps }}" as="st" hint-placeholder-count="4">
+        <div data-reveal="" data-fx="pop" data-delay="{{ st.delay }}" style="position:relative;display:flex;flex-direction:column;gap:14px">
+          <div data-step="" style="width:56px;height:56px;border-radius:18px;display:grid;place-items:center;background:#fff;border:2px solid #ECEEF2;color:#9A95A3;transition:background .5s,color .5s,border-color .5s,transform .5s cubic-bezier(.3,1.5,.5,1),box-shadow .5s">
+            <cfp-icon glyph="{{ st.icon }}" style="display:block;width:24px;height:24px;"></cfp-icon>
+          </div>
+          <div style="font-size:13px;font-weight:800;color:#87558B">Paso {{ st.n }}</div>
+          <div style="font-size:21px;font-weight:800;line-height:1.2">{{ st.t }}</div>
+          <p style="margin:0;font-size:16px;line-height:1.5;color:#4A4553;text-wrap:pretty">{{ st.s }}</p>
+        </div>
+      </sc-for>
+    </div>
+  </section>
+
+  <section id="galeria" style="background:#F6F7F9;padding:88px 0;scroll-margin-top:80px">
+    <div style="max-width:1200px;margin:0 auto;padding:0 24px;display:flex;flex-direction:column;gap:36px">
+      <div data-reveal="" style="display:flex;justify-content:space-between;align-items:flex-end;gap:24px;flex-wrap:wrap">
+        <div style="display:flex;flex-direction:column;gap:10px;max-width:620px">
+          <div style="font-size:13px;font-weight:800;letter-spacing:.12em;text-transform:uppercase;color:#0A7FA0">Galería de proyectos</div>
+          <h2 style="margin:0;font-size:clamp(30px,3.6vw,46px);line-height:1.08;font-weight:800;letter-spacing:-0.02em;text-wrap:balance">Lo que crean nuestros estudiantes</h2>
+        </div>
+        <a href="https://www.instagram.com/cfp_mercedes/" style="display:flex;align-items:center;gap:8px;font-weight:700;font-size:16px;color:#14121F;padding:12px 18px;border-radius:999px;border:1.5px solid #DADDE3;transition:background .2s,color .2s,border-color .2s" style-hover="background:#14121F;color:#fff;border-color:#14121F">
+          <cfp-icon glyph="instagram" style="display:block;width:18px;height:18px;"></cfp-icon>Ver más en Instagram
+        </a>
+      </div>
+      <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(min(100%,260px),1fr));grid-auto-rows:200px;grid-auto-flow:dense;gap:16px">
+        <sc-for list="{{ gallery }}" as="g" hint-placeholder-count="6">
+          <figure data-reveal="" data-fx="{{ g.fx }}" data-delay="{{ g.delay }}" style="margin:0;position:relative;border-radius:22px;overflow:hidden;grid-row:span {{ g.rows }};background:#E9E6EE;transition:transform .45s cubic-bezier(.2,.8,.2,1),box-shadow .45s" style-hover="transform:translateY(-6px) rotate(-.6deg);box-shadow:0 30px 50px -28px rgba(20,18,31,.5)">
+            <image-slot id="{{ g.slot }}" shape="rect" placeholder="{{ g.ph }}"></image-slot>
+            <figcaption style="position:absolute;left:12px;bottom:12px;display:flex;align-items:center;gap:8px;background:rgba(255,255,255,.92);backdrop-filter:blur(8px);color:#14121F;font-size:13px;font-weight:800;padding:7px 12px;border-radius:999px;pointer-events:none">
+              <span style="width:8px;height:8px;border-radius:50%;background:{{ g.color }}"></span>{{ g.t }}
+            </figcaption>
+          </figure>
+        </sc-for>
+      </div>
+    </div>
+  </section>
+
+  <section id="preguntas" style="max-width:880px;width:100%;box-sizing:border-box;margin:0 auto;padding:96px 24px;display:flex;flex-direction:column;gap:32px">
+    <div data-reveal="" style="display:flex;flex-direction:column;gap:10px;align-items:center;text-align:center">
+      <div style="font-size:13px;font-weight:800;letter-spacing:.12em;text-transform:uppercase;color:#C3126A">Preguntas frecuentes</div>
+      <h2 style="margin:0;font-size:clamp(30px,3.6vw,46px);line-height:1.08;font-weight:800;letter-spacing:-0.02em;text-wrap:balance">¿Tenés dudas?</h2>
+    </div>
+    <div style="display:flex;flex-direction:column;gap:12px">
+      <sc-for list="{{ faqs }}" as="q" hint-placeholder-count="4">
+        <div data-reveal="" data-delay="{{ q.delay }}" style="border-radius:20px;border:1.5px solid {{ q.bd }};background:{{ q.bg }};transition:background .35s,border-color .35s,box-shadow .35s;box-shadow:{{ q.sh }}">
+          <button onClick="{{ q.toggle }}" aria-expanded="{{ q.exp }}" style="width:100%;display:flex;align-items:center;gap:16px;padding:20px 22px;border:0;background:transparent;cursor:pointer;text-align:left;font:inherit;color:#14121F">
+            <span style="flex:1;font-size:18px;font-weight:800;line-height:1.3">{{ q.q }}</span>
+            <span style="flex:none;width:36px;height:36px;border-radius:50%;display:grid;place-items:center;background:{{ q.btnBg }};color:{{ q.btnFg }};transform:rotate({{ q.rot }}deg);transition:transform .45s cubic-bezier(.3,1.4,.5,1),background .3s,color .3s">
+              <cfp-icon glyph="plus" style="display:block;width:18px;height:18px;"></cfp-icon>
+            </span>
+          </button>
+          <div style="display:grid;grid-template-rows:{{ q.rows }};transition:grid-template-rows .45s cubic-bezier(.2,.8,.2,1)">
+            <div style="overflow:hidden">
+              <p style="margin:0;padding:0 22px 22px;font-size:16px;line-height:1.55;color:#4A4553;opacity:{{ q.op }};transform:translateY({{ q.ty }}px);transition:opacity .4s .05s,transform .45s cubic-bezier(.2,.8,.2,1)">{{ q.a }}</p>
+            </div>
+          </div>
+        </div>
+      </sc-for>
+    </div>
+  </section>
+
+  <section style="max-width:1200px;width:100%;box-sizing:border-box;margin:0 auto;padding:0 24px 96px">
+    <div data-reveal="" data-fx="scale" ref="{{ ctaRef }}" onMouseMove="{{ ctaMove }}" style="position:relative;overflow:hidden;border-radius:36px;padding:clamp(40px,7vw,80px) clamp(24px,5vw,64px);background:#14121F;color:#fff;display:flex;flex-direction:column;align-items:flex-start;gap:24px;--mx:70%;--my:30%">
+      <div aria-hidden="true" style="position:absolute;inset:0;background:radial-gradient(420px circle at var(--mx) var(--my),rgba(8,188,227,.35),transparent 60%);pointer-events:none;transition:background .1s"></div>
+      <div aria-hidden="true" style="position:absolute;width:340px;height:340px;right:-80px;top:-120px;border-radius:50%;background:#E5177B;filter:blur(80px);opacity:.55;animation:orb 14s ease-in-out infinite;pointer-events:none"></div>
+      <div aria-hidden="true" style="position:absolute;width:300px;height:300px;right:22%;bottom:-160px;border-radius:50%;background:#87558B;filter:blur(80px);opacity:.6;animation:orb 18s ease-in-out -6s infinite;pointer-events:none"></div>
+      <div aria-hidden="true" style="position:absolute;right:{{ ctaLogoR }};top:{{ ctaLogoT }};width:{{ ctaLogoW }};transform:translateY(-50%);opacity:{{ ctaLogoOp }};pointer-events:none">
+        <img src="assets/logo-cfp403.png" alt="" style="display:block;width:100%;animation:floaty 7s ease-in-out infinite">
+      </div>
+      <h2 style="position:relative;margin:0;max-width:620px;font-size:clamp(32px,4.4vw,56px);line-height:1.04;font-weight:800;letter-spacing:-0.02em;text-wrap:balance">Tu próximo oficio empieza en el CFP 403</h2>
+      <p style="position:relative;margin:0;max-width:520px;font-size:18px;line-height:1.55;color:#D8D4DF">Elegí un trayecto, reservá tu vacante y formate con certificación oficial de la Provincia de Buenos Aires.</p>
+      <div style="position:relative;display:flex;gap:12px;flex-wrap:wrap">
+        <a href="#trayectos" onClick="{{ navGo }}" style="position:relative;overflow:hidden;display:flex;align-items:center;gap:10px;background:#fff;color:#14121F;font-weight:800;font-size:16px;padding:16px 24px;border-radius:999px;transition:transform .25s" style-hover="color:#14121F;transform:translateY(-3px)">
+          <span aria-hidden="true" style="position:absolute;top:0;bottom:0;left:0;width:40%;background:linear-gradient(90deg,transparent,rgba(229,23,123,.25),transparent);animation:shine 3.2s ease-in-out infinite"></span>
+          Ver trayectos <cfp-icon glyph="arrow-right" style="display:block;width:18px;height:18px;"></cfp-icon>
+        </a>
+        <a href="#login" style="display:flex;align-items:center;gap:10px;color:#fff;font-weight:700;font-size:16px;padding:16px 22px;border-radius:999px;border:1.5px solid rgba(255,255,255,.35);transition:background .25s,border-color .25s" style-hover="color:#fff;background:rgba(255,255,255,.1);border-color:#fff">
+          <cfp-icon glyph="graduation-cap" style="display:block;width:18px;height:18px;"></cfp-icon>Aula virtual
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <footer style="border-top:1px solid #ECEEF2;background:#FAFAFB">
+    <div style="max-width:1200px;margin:0 auto;padding:56px 24px 28px;display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,220px),1fr));gap:36px">
+      <div style="display:flex;flex-direction:column;gap:14px">
+        <img src="assets/logo-cfp403.png" alt="CFP 403" style="width:64px;height:64px">
+        <p style="margin:0;font-size:15px;line-height:1.5;color:#5B5664">Formación profesional orientada al futuro digital y la industria local.</p>
+      </div>
+      <div style="display:flex;flex-direction:column;gap:10px">
+        <div style="font-weight:800;font-size:15px;margin-bottom:4px">Navegación</div>
+        <a href="#inicio" style="color:#4A4553;font-size:15px">Inicio</a>
+        <a href="#trayectos" style="color:#4A4553;font-size:15px">Trayectos formativos</a>
+        <a href="#galeria" style="color:#4A4553;font-size:15px">Galería de proyectos</a>
+        <a href="#preguntas" style="color:#4A4553;font-size:15px">Preguntas frecuentes</a>
+      </div>
+      <div style="display:flex;flex-direction:column;gap:12px">
+        <div style="font-weight:800;font-size:15px;margin-bottom:2px">Contacto</div>
+        <span style="display:flex;gap:10px;font-size:15px;color:#4A4553;line-height:1.4"><cfp-icon glyph="assets/icons/map-pin.svg" style="display:block;width:18px;height:18px;flex:none;margin-top:1px;color:#D1106F;"></cfp-icon>Calle 32 N° 1220 entre 49 y 51, Mercedes</span>
+        <a href="mailto:cfp403mercedes@abc.gob.ar" style="display:flex;gap:10px;font-size:15px;color:#4A4553"><cfp-icon glyph="assets/icons/mail.svg" style="display:block;width:18px;height:18px;flex:none;color:#87558B;"></cfp-icon>cfp403mercedes@abc.gob.ar</a>
+        <a href="https://www.instagram.com/cfp_mercedes/" style="display:flex;gap:10px;font-size:15px;color:#4A4553"><cfp-icon glyph="assets/icons/instagram.svg" style="display:block;width:18px;height:18px;flex:none;color:#0A8FB0;"></cfp-icon>@cfp_mercedes</a>
+      </div>
+      <div style="display:flex;flex-direction:column;gap:12px">
+        <div style="font-weight:800;font-size:15px;margin-bottom:2px">Accesos</div>
+        <a href="#login" style="display:flex;gap:10px;font-size:15px;color:#4A4553"><cfp-icon glyph="assets/icons/graduation-cap.svg" style="display:block;width:18px;height:18px;flex:none;"></cfp-icon>Aula virtual</a>
+        <a href="#admin" style="display:flex;gap:10px;font-size:15px;color:#4A4553"><cfp-icon glyph="assets/icons/shield-check.svg" style="display:block;width:18px;height:18px;flex:none;"></cfp-icon>Acceso Dirección</a>
+      </div>
+    </div>
+    <div style="max-width:1200px;margin:0 auto;padding:24px;display:flex;justify-content:space-between;align-items:center;gap:20px;flex-wrap:wrap;border-top:1px solid #ECEEF2">
+      <img src="assets/pba-horizontal-color.png" alt="Gobierno de la Provincia de Buenos Aires" style="height:52px;width:auto;max-width:100%">
+      <span style="font-size:13px;color:#6B6675">© 2026 Centro de Formación Profesional N° 403 de Mercedes</span>
+    </div>
+  </footer>
+
+  <sc-if value="{{ hasOpen }}" hint-placeholder-val="{{ false }}">
+    <div onClick="{{ close }}" style="position:fixed;inset:0;z-index:50;background:rgba(20,18,31,.55);backdrop-filter:blur(6px);display:grid;place-items:center;padding:20px">
+      <div ref="{{ modalRef }}" onClick="{{ stop }}" style="width:min(640px,100%);max-height:90vh;overflow:auto;background:#fff;border-radius:28px;box-shadow:0 40px 80px -30px rgba(20,18,31,.6)">
+        <div style="position:relative;padding:32px 32px 28px;color:#fff;background:linear-gradient(120deg,#E5177B,#87558B 40%,#3F79A6 75%,#08BCE3)">
+          <button onClick="{{ close }}" style="position:absolute;top:18px;right:18px;width:40px;height:40px;border-radius:50%;border:0;cursor:pointer;background:rgba(255,255,255,.2);color:#fff;display:grid;place-items:center"><cfp-icon glyph="assets/icons/x.svg" style="display:block;width:20px;height:20px;"></cfp-icon></button>
+          <div style="font-size:13px;font-weight:700;letter-spacing:.08em;text-transform:uppercase">{{ open.cat }}</div>
+          <div style="font-size:30px;font-weight:800;margin-top:6px;line-height:1.15">{{ open.name }}</div>
+        </div>
+        <div style="padding:28px 32px 32px;display:flex;flex-direction:column;gap:24px">
+          <div style="display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px">
+            <div style="background:#F6F7F9;border-radius:14px;padding:12px;display:flex;flex-direction:column;gap:6px"><cfp-icon glyph="assets/icons/map-pin.svg" style="display:block;width:18px;height:18px;color:#D1106F;"></cfp-icon><span style="font-size:14px;font-weight:700">{{ open.sede }}</span></div>
+            <div style="background:#F6F7F9;border-radius:14px;padding:12px;display:flex;flex-direction:column;gap:6px"><cfp-icon glyph="assets/icons/clock.svg" style="display:block;width:18px;height:18px;color:#87558B;"></cfp-icon><span style="font-size:14px;font-weight:700">{{ open.dur }}</span></div>
+            <div style="background:#F6F7F9;border-radius:14px;padding:12px;display:flex;flex-direction:column;gap:6px"><cfp-icon glyph="assets/icons/calendar.svg" style="display:block;width:18px;height:18px;color:#0A8FB0;"></cfp-icon><span style="font-size:14px;font-weight:700">{{ open.dias }}</span></div>
+          </div>
+          <div style="display:flex;flex-direction:column;gap:8px">
+            <div style="font-weight:800;font-size:17px">¿Qué vas a aprender?</div>
+            <p style="margin:0;font-size:16px;line-height:1.55;color:#4A4553">{{ open.desc }}</p>
+          </div>
+          <div style="display:flex;flex-direction:column;gap:8px">
+            <div style="font-weight:800;font-size:17px">Perfil profesional</div>
+            <p style="margin:0;font-size:16px;line-height:1.55;color:#4A4553">{{ open.perfil }}</p>
+          </div>
+          <div style="display:flex;flex-direction:column;gap:10px">
+            <div style="font-weight:800;font-size:17px">Requisitos</div>
+            <span style="display:flex;align-items:center;gap:10px;font-size:15px;color:#4A4553"><cfp-icon glyph="assets/icons/circle-check.svg" style="display:block;width:18px;height:18px;color:#0A8FB0;"></cfp-icon>DNI original y copia</span>
+            <span style="display:flex;align-items:center;gap:10px;font-size:15px;color:#4A4553"><cfp-icon glyph="assets/icons/circle-check.svg" style="display:block;width:18px;height:18px;color:#0A8FB0;"></cfp-icon>Estudios primarios completos</span>
+          </div>
+          <a href="#login" style="display:flex;justify-content:center;align-items:center;gap:10px;background:#D1106F;color:#fff;font-weight:700;font-size:16px;padding:16px;border-radius:14px" style-hover="color:#fff;background:#B0105E">
+            <cfp-icon glyph="assets/icons/lock.svg" style="display:block;width:18px;height:18px;"></cfp-icon>
+            Iniciar inscripción segura
+          </a>
+        </div>
+      </div>
+    </div>
+  </sc-if>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script>
+const IC = n => n;
+const CAT = {
+  'Tecnología': { color: '#0A7FA0', tint: '#E3F7FC' },
+  'Gastronomía y Servicios': { color: '#C3126A', tint: '#FDEEF5' },
+  'Agro y Textil': { color: '#7A3F80', tint: '#F4ECF5' }
+};
+const CURSOS = [
+  { name: 'Habilidades Digitales e I.A.', cat: 'Tecnología', icon: 'sparkles', dur: 'A definir', dias: 'A definir', desc: 'Herramientas digitales y de inteligencia artificial aplicadas al trabajo y al estudio.', perfil: 'Uso profesional de herramientas digitales e I.A. en distintos ámbitos laborales.' },
+  { name: 'Diseño Gráfico y Marketing Digital', cat: 'Tecnología', icon: 'monitor', dur: 'A definir', dias: 'A definir', desc: 'Diseño de piezas gráficas y estrategias de comunicación en redes y medios digitales.', perfil: 'Diseño y gestión de la comunicación digital de marcas y emprendimientos.' },
+  { name: 'Desarrollo de Software y Videojuegos', cat: 'Tecnología', icon: 'bot', dur: 'A definir', dias: 'A definir', desc: 'Lógica de programación y creación de software y videojuegos.', perfil: 'Desarrollo de software y videojuegos en equipos o de forma independiente.' },
+  { name: 'Desarrollo Web y Mobile', cat: 'Tecnología', icon: 'code', dur: 'A definir', dias: 'A definir', desc: 'Construcción de sitios y aplicaciones para web y dispositivos móviles.', perfil: 'Desarrollo web y mobile para emprendimientos, agencias o trabajo independiente.' },
+  { name: 'Organización de Eventos', cat: 'Gastronomía y Servicios', icon: 'calendar-days', dur: 'A definir', dias: 'A definir', desc: 'Planificación, presupuesto y coordinación de eventos sociales y corporativos.', perfil: 'Organización y coordinación de eventos.' },
+  { name: 'Gastronomía', cat: 'Gastronomía y Servicios', icon: 'chef-hat', dur: 'A definir', dias: 'A definir', desc: 'Técnicas culinarias, higiene y manipulación de alimentos.', perfil: 'Trabajo en cocinas de restaurantes, comedores y servicios de catering.' },
+  { name: 'Producción Hortícola y Cultivos Especializados', cat: 'Agro y Textil', icon: 'sprout', dur: 'A definir', dias: 'A definir', desc: 'Producción hortícola agroecológica y manejo de cultivos especializados.', perfil: 'Producción hortícola y gestión de huertas productivas.' },
+  { name: 'Confección y Emprendimientos Textiles', cat: 'Agro y Textil', icon: 'scissors', dur: 'A definir', dias: 'A definir', desc: 'Moldería, corte, confección y gestión de un emprendimiento textil.', perfil: 'Confección textil y desarrollo de emprendimientos propios.' }
+].map((c, i) => ({ ...c, id: i, sede: 'Sede Central', iconUrl: IC(c.icon), ...CAT[c.cat] }));
+const MENU = [
+  { label: 'Todos los cursos', icon: IC('book-open'), href: '#trayectos', cat: 'Todos', color: '#D1106F', tint: '#FDEEF5' },
+  { label: 'Tecnología', icon: IC('monitor'), href: '#trayectos', cat: 'Tecnología', color: '#0A7FA0', tint: '#E3F7FC' },
+  { label: 'Gastronomía', icon: IC('chef-hat'), href: '#trayectos', cat: 'Gastronomía y Servicios', color: '#C3126A', tint: '#FDEEF5' },
+  { label: 'Agro y Textil', icon: IC('sprout'), href: '#trayectos', cat: 'Agro y Textil', color: '#7A3F80', tint: '#F4ECF5' },
+  { label: 'Entornos', icon: IC('laptop'), href: '#entornos', color: '#3F79A6', tint: '#EAF1F7' },
+  { label: 'Agenda', icon: IC('calendar-days'), href: '#agenda', color: '#14121F', tint: '#F0F0F3' }
+];
+const CATS = ['Todos', 'Tecnología', 'Gastronomía y Servicios', 'Agro y Textil'];
+const WORDS = [
+  'en Habilidades Digitales e I.A.',
+  'en Diseño Gráfico y Marketing Digital',
+  'en Desarrollo de Software y Videojuegos',
+  'en Desarrollo Web y Mobile',
+  'en Producción Hortícola y Cultivos Especializados',
+  'en Confección y Emprendimientos Textiles',
+  'en Organización de Eventos',
+  'en Gastronomía'
+];
+const AGENDA = [
+  { d: '15', m: 'Mar', t: 'Apertura de inscripciones', s: 'Reservá tu vacante para los nuevos cursos.' },
+  { d: '10', m: 'Mar', t: 'Exposición anual de proyectos', s: 'Muestra de trabajos de alumnos en Sede Central.' },
+  { d: '01', m: 'Mar', t: 'Inauguración taller de robótica', s: 'Nuevo equipamiento de última generación.' }
+];
+const STEPS = [
+  { icon: 'pointer', t: 'Elegí tu trayecto', s: 'Explorá los cursos por área y abrí la ficha técnica del que te interese.' },
+  { icon: 'file-text', t: 'Prepará tu documentación', s: 'DNI original y copia, y constancia de estudios primarios completos.' },
+  { icon: 'user-round-check', t: 'Reservá tu vacante', s: 'Completá la inscripción online segura desde la ficha del curso.' },
+  { icon: 'graduation-cap', t: 'Empezá a cursar', s: 'Accedé al aula virtual y sumate a los entornos del Centro.' }
+].map((s, i) => ({ ...s, n: i + 1, delay: i * 120 }));
+const GALLERY = [
+  { slot: 'a-gal-1', ph: 'Proyecto de videojuego', t: 'Videojuegos', color: '#08BCE3', rows: 2, fx: 'left' },
+  { slot: 'a-gal-2', ph: 'Diseño gráfico', t: 'Diseño gráfico', color: '#E5177B', rows: 1, fx: 'up' },
+  { slot: 'a-gal-3', ph: 'Huerta agroecológica', t: 'Huerta', color: '#7A3F80', rows: 1, fx: 'up' },
+  { slot: 'a-gal-4', ph: 'Prendas textiles', t: 'Textil', color: '#87558B', rows: 2, fx: 'right' },
+  { slot: 'a-gal-5', ph: 'Plato de gastronomía', t: 'Gastronomía', color: '#C3126A', rows: 1, fx: 'scale' },
+  { slot: 'a-gal-6', ph: 'Sitio web de egresado', t: 'Desarrollo web', color: '#3F79A6', rows: 1, fx: 'scale' }
+].map((g, i) => ({ ...g, delay: (i % 3) * 110 }));
+const FAQS = [
+  { q: '¿Qué necesito para inscribirme?', a: 'DNI original y copia, y estudios primarios completos. Algunos trayectos pueden tener requisitos adicionales que figuran en su ficha técnica.' },
+  { q: '¿Los cursos entregan certificado?', a: 'Sí. Al finalizar recibís una certificación oficial de la Dirección de Formación Profesional de la Provincia de Buenos Aires.' },
+  { q: '¿Dónde se cursa?', a: 'En la Sede Central del CFP N° 403, Calle 32 N° 1220 entre 49 y 51, Mercedes. Cada ficha indica la sede y los días de cursada.' },
+  { q: '¿Cómo ingreso al aula virtual?', a: 'Desde el botón “Iniciar sesión” con el usuario que recibís al confirmar tu inscripción.' }
+];
+const ENTORNOS = [
+  { slot: 'a-ent-1', ph: 'Foto del aula de informática', icon: IC('laptop'), t: 'Aula de Informática', s: 'Equipada con PCs de última generación, ideal para desarrollo y diseño.' },
+  { slot: 'a-ent-2', ph: 'Foto de la huerta', icon: IC('sprout'), t: 'Huertas Interactivas', s: 'Proyecto agroecológico de economía circular y soberanía alimentaria.' },
+  { slot: 'a-ent-3', ph: 'Foto de proyectos', icon: IC('sparkles'), t: 'Proyectos Destacados', s: 'Videojuegos, sitios web y diseños textiles de nuestros egresados.' }
+];
+
+class Component extends DCLogic {
+  state = { cat: 'Todos', open: null, w: 0, menuOpen: false, compact: false, narrow: false, navOpen: false, scrolled: false, active: 'inicio', faq: 0, wideSteps: true };
+  stepsRef = React.createRef();
+  lineRef = React.createRef();
+  ctaRef = React.createRef();
+  panelRef = React.createRef();
+  headerRef = React.createRef();
+  logoRef = React.createRef();
+  navRef = React.createRef();
+  indRef = React.createRef();
+  progRef = React.createRef();
+  mnavRef = React.createRef();
+  wordRef = React.createRef();
+  typingRef = React.createRef();
+  caretRef = React.createRef();
+  modalRef = React.createRef();
+  componentDidMount() {
+    this.prevUiState = { ...this.state };
+    this.tw = { wi: 0, ci: 0, del: false };
+    const type = () => {
+      const el = this.wordRef.current, st = this.tw, word = WORDS[st.wi];
+      let wait;
+      if (st.del) { st.ci--; wait = 65; } else { st.ci++; wait = 70 + Math.random() * 60; }
+      if (el) { el.textContent = word.slice(0, st.ci); this.moveCaret(); }
+      if (!st.del && st.ci >= word.length) { st.del = true; wait = 2000; }
+      else if (st.del && st.ci <= 0) { st.del = false; st.wi = (st.wi + 1) % WORDS.length; wait = 450; }
+      this.t = setTimeout(type, wait);
+    };
+    this.t = setTimeout(type, 600);
+    this.typingRo = new ResizeObserver(() => this.moveCaret());
+    this.typingRef.current && this.typingRo.observe(this.typingRef.current);
+    document.fonts && document.fonts.ready.then(() => this.moveCaret());
+    this.io = new IntersectionObserver(es => es.forEach(e => {
+      if (!e.isIntersecting) return;
+      const fx = e.target.dataset.fx;
+      const from = fx === 'left' ? 'translateX(-48px)' : fx === 'right' ? 'translateX(48px)' : fx === 'scale' ? 'scale(.9)' : fx === 'pop' ? 'translateY(30px) scale(.85)' : 'translateY(28px)';
+      e.target.animate([{ opacity: 0, transform: from, filter: fx === 'scale' ? 'blur(8px)' : 'none' }, { opacity: 1, transform: 'none', filter: 'none' }],
+        { duration: fx === 'pop' ? 700 : 850, easing: fx === 'pop' ? 'cubic-bezier(.3,1.5,.5,1)' : 'cubic-bezier(.2,.7,.2,1)', delay: +(e.target.dataset.delay || 0), fill: 'backwards' });
+      this.io.unobserve(e.target);
+    }), { threshold: 0.12 });
+    this.observe();
+    this.mt = setTimeout(() => this.setState({ menuOpen: true }), 700);
+    this.ro = new ResizeObserver(([e]) => { const c = e.contentRect.width < 440; if (c !== this.state.compact) this.setState({ compact: c }); });
+    this.panelRef.current && this.ro.observe(this.panelRef.current);
+    this.hro = new ResizeObserver(([e]) => { const n = e.contentRect.width < 820; if (n !== this.state.narrow) this.setState({ narrow: n, navOpen: false }); });
+    this.headerRef.current && this.hro.observe(this.headerRef.current);
+    this.onScroll = () => {
+      if (this.raf) return;
+      this.raf = requestAnimationFrame(() => {
+        this.raf = null;
+        const y = window.scrollY, max = document.documentElement.scrollHeight - innerHeight;
+        if (this.progRef.current) this.progRef.current.style.transform = 'scaleX(' + (max > 0 ? Math.min(1, y / max) : 0) + ')';
+        this.stepProgress();
+        const sc = this.state.scrolled ? y > 40 : y > 90;
+        let active = 'inicio';
+        ['inicio', 'entornos', 'trayectos', 'galeria'].forEach(id => { const el = document.getElementById(id); if (el && el.getBoundingClientRect().top < 140) active = id; });
+        if (sc !== this.state.scrolled || active !== this.state.active) this.setState({ scrolled: sc, active });
+      });
+    };
+    window.addEventListener('scroll', this.onScroll, { passive: true });
+    this.sro = new ResizeObserver(([e]) => { const w = e.contentRect.width >= 900; if (w !== this.state.wideSteps) this.setState({ wideSteps: w }); });
+    this.stepsRef.current && this.sro.observe(this.stepsRef.current);
+    this.onScroll();
+    this.onResize = () => this.moveInd();
+    window.addEventListener('resize', this.onResize);
+    setTimeout(() => this.moveInd(), 400);
+    this.onKey = e => { if (e.key === 'Escape') this.setState({ open: null, navOpen: false }); };
+    window.addEventListener('keydown', this.onKey);
+  }
+  observe() {
+    document.querySelectorAll('[data-reveal]:not([data-seen])').forEach(el => { el.dataset.seen = '1'; this.io.observe(el); });
+  }
+  componentDidUpdate() {
+    const ps = this.prevUiState || this.state;
+    this.prevUiState = { ...this.state };
+    this.observe();
+    if (ps.active !== this.state.active || ps.narrow !== this.state.narrow) this.moveInd();
+    if (ps.scrolled !== this.state.scrolled) {
+      setTimeout(() => this.moveInd(), 620);
+      const lg = this.logoRef.current;
+      if (lg) lg.animate(this.state.scrolled
+        ? [{ transform: 'rotate(0) scale(1)' }, { transform: 'rotate(-200deg) scale(.86)', offset: .6 }, { transform: 'rotate(-360deg) scale(1)' }]
+        : [{ transform: 'rotate(0) scale(1)' }, { transform: 'rotate(200deg) scale(1.1)', offset: .6 }, { transform: 'rotate(360deg) scale(1)' }],
+        { duration: 750, easing: 'cubic-bezier(.3,.8,.3,1)' });
+      const hd = this.headerRef.current && this.headerRef.current.firstElementChild;
+      if (hd && this.state.scrolled) hd.animate([{ transform: 'translateY(-14px)', opacity: .6 }, { transform: 'none', opacity: 1 }], { duration: 500, easing: 'cubic-bezier(.2,.8,.2,1)' });
+    }
+    if (ps.compact !== this.state.compact && this.state.compact) document.querySelectorAll('[data-pop]').forEach((el, i) => el.animate(
+      [{ opacity: 0, transform: 'translateY(14px) scale(.92)' }, { opacity: 1, transform: 'none' }],
+      { duration: 500, delay: i * 60, easing: 'cubic-bezier(.2,.9,.25,1.2)', fill: 'backwards' }));
+    if (!ps.navOpen && this.state.navOpen && this.mnavRef.current) {
+      this.mnavRef.current.animate([{ opacity: 0, transform: 'translateY(-10px)' }, { opacity: 1, transform: 'none' }], { duration: 320, easing: 'cubic-bezier(.2,.7,.2,1)' });
+      this.mnavRef.current.querySelectorAll('[data-mlink]').forEach((el, i) => el.animate([{ opacity: 0, transform: 'translateX(-14px)' }, { opacity: 1, transform: 'none' }], { duration: 380, delay: 60 + i * 45, easing: 'cubic-bezier(.2,.7,.2,1)', fill: 'backwards' }));
+    }
+    if (!ps.open && this.state.open && this.modalRef.current) this.modalRef.current.animate(
+      [{ opacity: 0, transform: 'translateY(24px) scale(.97)' }, { opacity: 1, transform: 'none' }],
+      { duration: 380, easing: 'cubic-bezier(.2,.7,.2,1)' });
+  }
+  moveCaret() {
+    const word = this.wordRef.current, box = this.typingRef.current, caret = this.caretRef.current;
+    if (!word || !box || !caret) return;
+    const base = box.getBoundingClientRect();
+    let x = 0, y = 0;
+    if (word.firstChild && word.textContent.length) {
+      const range = document.createRange();
+      range.setStart(word.firstChild, word.textContent.length - 1);
+      range.setEnd(word.firstChild, word.textContent.length);
+      const rects = range.getClientRects(), end = rects[rects.length - 1];
+      if (end) { x = end.right - base.left; y = end.top - base.top + (end.height - caret.offsetHeight) / 2; }
+    }
+    caret.style.transform = 'translate(' + x + 'px,' + y + 'px)';
+  }
+  moveInd() {
+    const nav = this.navRef.current, ind = this.indRef.current; if (!nav || !ind) return;
+    const a = nav.querySelector('[data-nav="' + this.state.active + '"]');
+    if (!a) { ind.style.opacity = 0; return; }
+    ind.style.left = a.offsetLeft + 'px'; ind.style.width = a.offsetWidth + 'px'; ind.style.opacity = 1;
+    nav.querySelectorAll('[data-nav]').forEach(l => { l.style.color = l === a ? '#C3126A' : '#14121F'; });
+  }
+stepProgress() {
+    const box = this.stepsRef.current; if (!box) return;
+    const r = box.getBoundingClientRect();
+    const p = Math.max(0, Math.min(1, (innerHeight * 0.75 - r.top) / (r.height + innerHeight * 0.2)));
+    if (this.lineRef.current) this.lineRef.current.style.transform = 'scaleX(' + p + ')';
+    const icons = box.querySelectorAll('[data-step]'), n = icons.length;
+    icons.forEach((el, i) => {
+      const on = p >= (n > 1 ? i / (n - 1) : 0) - 0.02 && p > 0.01;
+      if (el.dataset.on === String(on)) return;
+      el.dataset.on = String(on);
+      el.style.background = on ? '#D1106F' : '#fff';
+      el.style.color = on ? '#fff' : '#9A95A3';
+      el.style.borderColor = on ? '#D1106F' : '#ECEEF2';
+      el.style.transform = on ? 'scale(1.08) rotate(-6deg)' : 'none';
+      el.style.boxShadow = on ? '0 14px 26px -12px rgba(209,16,111,.6)' : 'none';
+    });
+  }
+  componentWillUnmount() { this.typingRo && this.typingRo.disconnect(); cancelAnimationFrame(this.raf); this.sro && this.sro.disconnect(); window.removeEventListener('scroll', this.onScroll); window.removeEventListener('resize', this.onResize); clearTimeout(this.mt); this.ro && this.ro.disconnect(); this.hro && this.hro.disconnect(); clearTimeout(this.t); this.io && this.io.disconnect(); window.removeEventListener('keydown', this.onKey); }
+  goTo(it, e) {
+    e.preventDefault();
+    if (it.cat) this.setState({ cat: it.cat });
+    const el = document.querySelector(it.href); if (!el) return;
+    const top = el.getBoundingClientRect().top + window.scrollY - (this.headerRef.current ? this.headerRef.current.offsetHeight + 16 : 84);
+    window.scrollTo({ top, behavior: 'smooth' });
+    setTimeout(() => el.animate([{ boxShadow: '0 0 0 0 rgba(229,23,123,.0)' }, { boxShadow: '0 0 0 6px rgba(229,23,123,.35)' }, { boxShadow: '0 0 0 0 rgba(229,23,123,0)' }],
+      { duration: 1100, easing: 'ease-out' }), 650);
+  }
+  renderVals() {
+    const { cat, open, w, menuOpen, compact, narrow, navOpen, scrolled: S } = this.state;
+    const n = MENU.length;
+    const list = cat === 'Todos' ? CURSOS : CURSOS.filter(c => c.cat === cat);
+    return {
+      wordRef: this.wordRef, typingRef: this.typingRef, caretRef: this.caretRef, modalRef: this.modalRef,
+      agenda: AGENDA, entornos: ENTORNOS,
+      stepsRef: this.stepsRef, lineRef: this.lineRef, ctaRef: this.ctaRef,
+      lineDisp: this.state.wideSteps ? 'block' : 'none',
+      ctaLogoR: this.state.wideSteps ? 'clamp(24px,5vw,72px)' : '-50px', ctaLogoT: this.state.wideSteps ? '50%' : '92%',
+      ctaLogoW: this.state.wideSteps ? 'clamp(200px,24vw,280px)' : '150px', ctaLogoOp: this.state.wideSteps ? 0.9 : 0.22,
+      steps: STEPS, gallery: GALLERY,
+      faqs: FAQS.map((q, i) => { const o = this.state.faq === i; return { ...q, delay: i * 80,
+        exp: String(o), rows: o ? '1fr' : '0fr', op: o ? 1 : 0, ty: o ? 0 : -8, rot: o ? 135 : 0,
+        bg: o ? '#fff' : '#F6F7F9', bd: o ? '#E5177B' : 'transparent', sh: o ? '0 20px 40px -28px rgba(209,16,111,.55)' : 'none',
+        btnBg: o ? '#D1106F' : '#fff', btnFg: o ? '#fff' : '#14121F',
+        toggle: () => this.setState(s => ({ faq: s.faq === i ? -1 : i })) }; }),
+      ctaMove: e => { const el = this.ctaRef.current; if (!el) return; const r = el.getBoundingClientRect();
+        el.style.setProperty('--mx', (e.clientX - r.left) + 'px'); el.style.setProperty('--my', (e.clientY - r.top) + 'px'); },
+      panelRef: this.panelRef, orbit: true,
+      orbAspect: compact ? '1/1.04' : '1/0.92', ringW: compact ? '68%' : '74%', logoW: compact ? '34%' : '40%',
+      hintTop: compact ? '91%' : '92%', hintFs: compact ? '12px' : '13px',
+      headerRef: this.headerRef, mnavRef: this.mnavRef, logoRef: this.logoRef, navRef: this.navRef, indRef: this.indRef, progRef: this.progRef,
+      hdrPad: S ? '10px 14px 0' : '0px 0px 0', hdrBg: S ? 'rgba(255,255,255,0)' : 'rgba(255,255,255,.82)', hdrBd: S ? 'rgba(236,238,242,0)' : '#ECEEF2', hdrBlur: S ? 'none' : 'blur(14px)',
+      pillMax: S ? (narrow ? '520px' : '820px') : '1200px', pillPad: S ? '7px 7px 7px 8px' : '12px 22px',
+      pillBg: S ? 'rgba(255,255,255,.76)' : 'rgba(255,255,255,0)', pillBd: S ? 'rgba(20,18,31,.08)' : 'rgba(20,18,31,0)',
+      pillRad: S ? '999px' : '0px', pillShadow: S ? '0 18px 40px -18px rgba(20,18,31,.35), 0 2px 6px rgba(20,18,31,.05)' : '0 0 0 rgba(20,18,31,0)', pillBlur: S ? 'blur(16px)' : 'none',
+      logoSize: S ? '40px' : '46px', brandGap: S ? '0px' : '12px',
+      txtMax: S ? '0px' : '260px', txtOp: S ? 0 : 1, txtTf: S ? 'translateX(-12px)' : 'none', txtBlur: S ? 'blur(4px)' : 'none',
+      btnPad: S ? '10px 18px' : '11px 18px', btnRad: S ? '999px' : '12px',
+      menuBtn: S ? '42px' : '48px', menuBtnRad: S ? '999px' : '14px', progOp: S ? 1 : 0,
+      mnavMargin: S ? '8px auto 0' : '0 auto', mnavRad: S ? '24px' : '0px',
+      wide: !narrow, narrow, navOpen: narrow && navOpen, navOpenStr: String(navOpen),
+      navLabel: navOpen ? 'Cerrar menú' : 'Abrir menú', navBtnBg: navOpen ? '#14121F' : '#fff', navBtnFg: navOpen ? '#fff' : '#14121F',
+      toggleNav: () => this.setState(s => ({ navOpen: !s.navOpen })),
+      navGo: e => { const href = e.currentTarget.getAttribute('href'); this.setState({ navOpen: false }); this.goTo({ href }, e); },
+      menuOpenStr: String(menuOpen),
+      hint: menuOpen ? 'Elegí una opción' : 'Tocá el logo',
+      hintOp: 1,
+      toggle: () => this.setState(s => ({ menuOpen: !s.menuOpen })),
+      menu: MENU.map((it, i) => {
+        const a = (-60 + i * (360 / n)) * Math.PI / 180;
+        const rx = compact ? 34 : 37, ry = compact ? 34 / 1.04 : 37 / 0.92;
+        return { ...it,
+          cardW: compact ? '90px' : '112px', cardH: compact ? '66px' : '78px', cardPad: compact ? '9px 7px' : '11px 9px', ico: compact ? '21px' : '26px', lfs: compact ? '11px' : '13px',
+          x: menuOpen ? +(50 + rx * Math.cos(a)).toFixed(2) : 50,
+          y: menuOpen ? +(50 + ry * Math.sin(a)).toFixed(2) : 50,
+          op: menuOpen ? 1 : 0, sc: menuOpen ? 1 : 0.3, pe: menuOpen ? 'auto' : 'none', tab: menuOpen ? 0 : -1,
+          d: menuOpen ? (i * 0.07).toFixed(2) : ((n - 1 - i) * 0.04).toFixed(2), fd: (i * 0.6).toFixed(1),
+          go: e => this.goTo(it, e) };
+      }),
+      cats: CATS.map(label => {
+        const on = label === cat;
+        return { label, n: label === 'Todos' ? CURSOS.length : CURSOS.filter(c => c.cat === label).length,
+          bg: on ? '#14121F' : '#fff', fg: on ? '#fff' : '#14121F', bd: on ? '#14121F' : '#DADDE3',
+          onClick: () => this.setState({ cat: label }) };
+      }),
+      cursos: list.map(c => ({ ...c, icon: c.iconUrl, onOpen: () => this.setState({ open: c }) })),
+      hasOpen: !!open, open: open || {},
+      close: () => this.setState({ open: null }),
+      stop: e => e.stopPropagation()
+    };
+  }
+}
+</script>
+</body>
+</html>
