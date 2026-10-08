@@ -26,6 +26,9 @@ a:hover{color:#0A8FB0}
 @keyframes shine{0%{transform:translateX(-120%) skewX(-20deg)}60%,100%{transform:translateX(320%) skewX(-20deg)}}
 @keyframes orb{0%,100%{transform:translate(0,0) scale(1)}33%{transform:translate(30px,-20px) scale(1.1)}66%{transform:translate(-20px,25px) scale(.95)}}
 @keyframes pulse{0%{box-shadow:0 0 0 0 rgba(229,23,123,.55)}100%{box-shadow:0 0 0 10px rgba(229,23,123,0)}}
+a,button{-webkit-tap-highlight-color:transparent}
+.nav-toggle,nav[aria-label="Menú rápido"],img[alt="CFP 403"]{-webkit-user-select:none;user-select:none;-webkit-touch-callout:none}
+img[alt="CFP 403"]{-webkit-user-drag:none}
 .nav-toggle{position:relative}
 .nav-toggle-lines{position:relative;display:block;width:22px;height:22px;transition:transform .35s cubic-bezier(.2,.8,.2,1)}
 .nav-toggle-lines span{position:absolute;left:0;width:22px;height:2px;border-radius:2px;background:currentColor;transition:transform .35s cubic-bezier(.2,.8,.2,1),opacity .2s}
@@ -48,7 +51,7 @@ a:hover{color:#0A8FB0}
   <header ref="{{ headerRef }}" style="position:sticky;top:0;z-index:30;padding:{{ hdrPad }};background:{{ hdrBg }};border-bottom:1px solid {{ hdrBd }};backdrop-filter:{{ hdrBlur }};-webkit-backdrop-filter:{{ hdrBlur }};transition:padding .5s cubic-bezier(.2,.8,.2,1),background .4s,border-color .4s">
     <div style="position:relative;overflow:hidden;max-width:{{ pillMax }};margin:0 auto;padding:{{ pillPad }};display:flex;align-items:center;gap:16px;flex-wrap:nowrap;background:{{ pillBg }};border:1px solid {{ pillBd }};border-radius:{{ pillRad }};box-shadow:{{ pillShadow }};backdrop-filter:{{ pillBlur }};-webkit-backdrop-filter:{{ pillBlur }};transition:max-width .6s cubic-bezier(.2,.8,.2,1),padding .5s cubic-bezier(.2,.8,.2,1),border-radius .5s cubic-bezier(.2,.8,.2,1),background .4s,border-color .4s,box-shadow .5s">
       <a href="#inicio" onClick="{{ navGo }}" aria-label="CFP N° 403 Mercedes" style="display:flex;align-items:center;gap:{{ brandGap }};color:#14121F;flex:none;min-width:0;transition:gap .5s cubic-bezier(.2,.8,.2,1)">
-        <img ref="{{ logoRef }}" src="assets/logo-cfp403.png" alt="CFP 403" style="width:{{ logoSize }};height:{{ logoSize }};flex:none;transition:width .5s cubic-bezier(.2,.8,.2,1),height .5s cubic-bezier(.2,.8,.2,1)">
+        <img draggable="false" ref="{{ logoRef }}" src="assets/logo-cfp403.png" alt="CFP 403" style="width:{{ logoSize }};height:{{ logoSize }};flex:none;transition:width .5s cubic-bezier(.2,.8,.2,1),height .5s cubic-bezier(.2,.8,.2,1)">
         <span style="display:flex;flex-direction:column;line-height:1.1;min-width:0;overflow:hidden;max-width:{{ txtMax }};opacity:{{ txtOp }};transform:{{ txtTf }};filter:{{ txtBlur }};transition:max-width .55s cubic-bezier(.2,.8,.2,1),opacity .35s,transform .5s cubic-bezier(.2,.8,.2,1),filter .4s">
           <span style="font-weight:800;font-size:17px;white-space:nowrap">CFP N° 403</span>
           <span style="font-size:13px;color:#534A47;font-weight:500;white-space:nowrap">Mercedes · Formación Profesional</span>
@@ -115,7 +118,7 @@ a:hover{color:#0A8FB0}
       </div>
       <h1 data-reveal="" data-delay="80" aria-label="Formación Profesional" style="margin:0;font-size:clamp(38px,5vw,64px);line-height:1.04;font-weight:800;letter-spacing:-0.02em;display:flex;flex-direction:column">
         <span>Formación Profesional</span>
-        <span ref="{{ typingRef }}" style="position:relative;display:block;min-height:2.08em;font-size:.82em;line-height:1.04;margin-top:.12em"><span ref="{{ wordRef }}" style="background:linear-gradient(90deg,#E5177B,#87558B 50%,#08BCE3);-webkit-background-clip:text;background-clip:text;color:transparent;-webkit-box-decoration-break:clone;box-decoration-break:clone"></span><span ref="{{ caretRef }}" aria-hidden="true" style="position:absolute;left:0;top:0;display:block;width:.08em;height:.9em;margin-left:.06em;border-radius:2px;background:#D1106F;pointer-events:none;transition:transform 90ms cubic-bezier(.2,.7,.2,1);animation:blink 1s steps(1) infinite"></span></span>
+        <span ref="{{ typingRef }}" style="position:relative;display:block;min-height:2.08em;font-size:.82em;line-height:1.04;margin-top:.12em"><span ref="{{ wordRef }}" style="background:linear-gradient(90deg,#E5177B,#87558B 50%,#08BCE3);-webkit-background-clip:text;background-clip:text;color:transparent;-webkit-box-decoration-break:clone;box-decoration-break:clone"></span><span ref="{{ caretRef }}" aria-hidden="true" style="position:relative;display:inline-block;width:.08em;height:.9em;margin-left:.06em;vertical-align:-.08em;border-radius:2px;background:#D1106F;pointer-events:none;animation:blink 1s steps(1) infinite"><span ref="{{ trailRef }}" style="position:absolute;inset:0;background:#D1106F;border-radius:inherit;opacity:0;pointer-events:none"></span></span></span>
       </h1>
       <p data-reveal="" data-delay="160" style="margin:0;font-size:20px;line-height:1.55;color:#4A4553;max-width:520px;text-wrap:pretty">Impulsá tu futuro con cursos actualizados y certificación oficial para acceder a tu próximo empleo.</p>
       <div data-reveal="" data-delay="240" style="display:flex;gap:12px;flex-wrap:wrap">
@@ -136,7 +139,7 @@ a:hover{color:#0A8FB0}
           <div style="position:absolute;width:{{ ringW }};aspect-ratio:1;border-radius:50%;border:1.5px dashed rgba(255,255,255,.5);animation:spin 60s linear infinite;pointer-events:none"></div>
           <div style="position:absolute;width:54%;aspect-ratio:1;border-radius:50%;border:1px solid rgba(255,255,255,.22);pointer-events:none"></div>
           <button onClick="{{ toggle }}" aria-expanded="{{ menuOpenStr }}" aria-label="Abrir o cerrar menú" style="position:relative;z-index:2;width:{{ logoW }};aspect-ratio:1;border:0;padding:0;background:transparent;cursor:pointer;display:grid;place-items:center;border-radius:50%;transition:transform .35s cubic-bezier(.2,.7,.2,1)" style-hover="transform:scale(1.05)" style-active="transform:scale(.96)">
-            <img src="assets/logo-cfp403.png" alt="CFP 403" style="width:100%;filter:drop-shadow(0 24px 40px rgba(20,18,31,.35));animation:floaty 6s ease-in-out infinite">
+            <img draggable="false" src="assets/logo-cfp403.png" alt="CFP 403" style="width:100%;filter:drop-shadow(0 24px 40px rgba(20,18,31,.35));animation:floaty 6s ease-in-out infinite">
           </button>
           <div style="position:absolute;left:50%;top:{{ hintTop }};transform:translateX(-50%);z-index:2;display:flex;align-items:center;gap:6px;white-space:nowrap;background:rgba(20,18,31,.55);color:#fff;font-size:{{ hintFs }};font-weight:700;padding:6px 12px;border-radius:999px;pointer-events:none;opacity:{{ hintOp }};transition:opacity .4s">
             <cfp-icon glyph="assets/icons/mouse-pointer-click.svg" style="display:block;width:14px;height:14px;"></cfp-icon>{{ hint }}
@@ -351,7 +354,7 @@ a:hover{color:#0A8FB0}
   <footer style="border-top:1px solid #ECEEF2;background:#FAFAFB">
     <div style="max-width:1200px;margin:0 auto;padding:56px 24px 28px;display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,220px),1fr));gap:36px">
       <div style="display:flex;flex-direction:column;gap:14px">
-        <img src="assets/logo-cfp403.png" alt="CFP 403" style="width:64px;height:64px">
+        <img draggable="false" src="assets/logo-cfp403.png" alt="CFP 403" style="width:64px;height:64px">
         <p style="margin:0;font-size:15px;line-height:1.5;color:#5B5664">Formación profesional orientada al futuro digital y la industria local.</p>
       </div>
       <div style="display:flex;flex-direction:column;gap:10px">
@@ -498,6 +501,7 @@ class Component extends DCLogic {
   wordRef = React.createRef();
   typingRef = React.createRef();
   caretRef = React.createRef();
+  trailRef = React.createRef();
   modalRef = React.createRef();
   componentDidMount() {
     this.prevUiState = { ...this.state };
@@ -506,15 +510,12 @@ class Component extends DCLogic {
       const el = this.wordRef.current, st = this.tw, word = WORDS[st.wi];
       let wait;
       if (st.del) { st.ci--; wait = 65; } else { st.ci++; wait = 70 + Math.random() * 60; }
-      if (el) { el.textContent = word.slice(0, st.ci); this.moveCaret(); }
+      if (el) this.writeWord(word.slice(0, st.ci));
       if (!st.del && st.ci >= word.length) { st.del = true; wait = 2000; }
       else if (st.del && st.ci <= 0) { st.del = false; st.wi = (st.wi + 1) % WORDS.length; wait = 450; }
       this.t = setTimeout(type, wait);
     };
     this.t = setTimeout(type, 600);
-    this.typingRo = new ResizeObserver(() => this.moveCaret());
-    this.typingRef.current && this.typingRo.observe(this.typingRef.current);
-    document.fonts && document.fonts.ready.then(() => this.moveCaret());
     this.io = new IntersectionObserver(es => es.forEach(e => {
       if (!e.isIntersecting) return;
       const fx = e.target.dataset.fx;
@@ -581,19 +582,32 @@ class Component extends DCLogic {
       [{ opacity: 0, transform: 'translateY(24px) scale(.97)' }, { opacity: 1, transform: 'none' }],
       { duration: 380, easing: 'cubic-bezier(.2,.7,.2,1)' });
   }
-  moveCaret() {
-    const word = this.wordRef.current, box = this.typingRef.current, caret = this.caretRef.current;
-    if (!word || !box || !caret) return;
-    const base = box.getBoundingClientRect();
-    let x = 0, y = 0;
-    if (word.firstChild && word.textContent.length) {
-      const range = document.createRange();
-      range.setStart(word.firstChild, word.textContent.length - 1);
-      range.setEnd(word.firstChild, word.textContent.length);
-      const rects = range.getClientRects(), end = rects[rects.length - 1];
-      if (end) { x = end.right - base.left; y = end.top - base.top + (end.height - caret.offsetHeight) / 2; }
+  writeWord(text) {
+    const word = this.wordRef.current, caret = this.caretRef.current;
+    if (!word || !caret) return;
+    const before = caret.getBoundingClientRect();
+    this.caretAnimation && this.caretAnimation.cancel();
+    this.trailAnimation && this.trailAnimation.cancel();
+    word.textContent = text;
+    const after = caret.getBoundingClientRect();
+    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+    // Keep the insertion position in the text flow. The visible caret and
+    // fading trail ease into it, inspired by the configured Kitty cursor trail.
+    const sameLine = Math.abs(before.top - after.top) < 2;
+    const maxLag = after.height * .6;
+    const dx = sameLine ? Math.max(-maxLag, Math.min(maxLag, before.left - after.left)) : -Math.min(10, after.width * 3);
+    if (Math.abs(dx) < .1) return;
+    this.caretAnimation = caret.animate(
+      [{ transform: 'translateX(' + dx + 'px)' }, { transform: 'translateX(0)' }],
+      { duration: 105, easing: 'cubic-bezier(.16,.8,.3,1)' });
+    const trail = this.trailRef.current;
+    if (trail) {
+      const stretch = Math.min(5, Math.max(1, Math.abs(dx) / Math.max(1, after.width)));
+      trail.style.transformOrigin = dx < 0 ? 'right center' : 'left center';
+      this.trailAnimation = trail.animate(
+        [{ opacity: .25, transform: 'scaleX(' + stretch + ')' }, { opacity: 0, transform: 'scaleX(1)' }],
+        { duration: 240, easing: 'ease-out' });
     }
-    caret.style.transform = 'translate(' + x + 'px,' + y + 'px)';
   }
   moveInd() {
     const nav = this.navRef.current, ind = this.indRef.current; if (!nav || !ind) return;
@@ -619,7 +633,7 @@ stepProgress() {
       el.style.boxShadow = on ? '0 14px 26px -12px rgba(209,16,111,.6)' : 'none';
     });
   }
-  componentWillUnmount() { this.typingRo && this.typingRo.disconnect(); cancelAnimationFrame(this.raf); this.sro && this.sro.disconnect(); window.removeEventListener('scroll', this.onScroll); window.removeEventListener('resize', this.onResize); clearTimeout(this.mt); this.ro && this.ro.disconnect(); this.hro && this.hro.disconnect(); clearTimeout(this.t); this.io && this.io.disconnect(); window.removeEventListener('keydown', this.onKey); }
+  componentWillUnmount() { this.trailAnimation && this.trailAnimation.cancel(); this.caretAnimation && this.caretAnimation.cancel(); cancelAnimationFrame(this.raf); this.sro && this.sro.disconnect(); window.removeEventListener('scroll', this.onScroll); window.removeEventListener('resize', this.onResize); clearTimeout(this.mt); this.ro && this.ro.disconnect(); this.hro && this.hro.disconnect(); clearTimeout(this.t); this.io && this.io.disconnect(); window.removeEventListener('keydown', this.onKey); }
   goTo(it, e) {
     e.preventDefault();
     if (it.cat) this.setState({ cat: it.cat });
@@ -634,7 +648,7 @@ stepProgress() {
     const n = MENU.length;
     const list = cat === 'Todos' ? CURSOS : CURSOS.filter(c => c.cat === cat);
     return {
-      wordRef: this.wordRef, typingRef: this.typingRef, caretRef: this.caretRef, modalRef: this.modalRef,
+      wordRef: this.wordRef, typingRef: this.typingRef, caretRef: this.caretRef, trailRef: this.trailRef, modalRef: this.modalRef,
       agenda: AGENDA, entornos: ENTORNOS,
       stepsRef: this.stepsRef, lineRef: this.lineRef, ctaRef: this.ctaRef,
       lineDisp: this.state.wideSteps ? 'block' : 'none',
