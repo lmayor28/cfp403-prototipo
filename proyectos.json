@@ -1,0 +1,62 @@
+[
+  {
+    "id": "proj-1",
+    "titulo": "Videojuego 2D: Retro Arcade",
+    "categoria": "Videojuegos",
+    "tipo": "link",
+    "url": "https://itch.io",
+    "imagen": "assets/entornos/sala-informatica.jpg",
+    "descripcion": "Juego de plataformas 2D programado en Python por estudiantes del trayecto de Programación y Videojuegos.",
+    "color": "#08BCE3"
+  },
+  {
+    "id": "proj-2",
+    "titulo": "Identidad Visual y Packaging Comercial",
+    "categoria": "Diseño",
+    "tipo": "foto",
+    "url": "",
+    "imagen": "assets/entornos/sala-informatica.jpg",
+    "descripcion": "Diseño de marcas, logotipos y piezas publicitarias desarrollado en el trayecto de Diseño y Marketing Digital.",
+    "color": "#E5177B"
+  },
+  {
+    "id": "proj-3",
+    "titulo": "Cultivo Agroecológico y Hongos Comestibles",
+    "categoria": "Agro",
+    "tipo": "foto",
+    "url": "",
+    "imagen": "assets/entornos/taller-textil.jpg",
+    "descripcion": "Producción sustentable y manejo de cultivos especiales realizada en el entorno de huerta.",
+    "color": "#08BCE3"
+  },
+  {
+    "id": "proj-4",
+    "titulo": "Colección de Indumentaria y Lencería",
+    "categoria": "Textil",
+    "tipo": "foto",
+    "url": "",
+    "imagen": "assets/entornos/taller-textil.jpg",
+    "descripcion": "Prendas de vestir confeccionadas con maquinaria industrial y moldería propia del Taller Textil.",
+    "color": "#7A3F80"
+  },
+  {
+    "id": "proj-5",
+    "titulo": "Elaboración de Pastelería y Panificación",
+    "categoria": "Gastronomía",
+    "tipo": "foto",
+    "url": "",
+    "imagen": "assets/entornos/salon-gastronomia.jpg",
+    "descripcion": "Productos gastronómicos y técnicas de inocuidad alimentaria aplicadas en el Salón de Gastronomía.",
+    "color": "#E5177B"
+  },
+  {
+    "id": "proj-6",
+    "titulo": "Plataforma Web Institucional y Catálogo",
+    "categoria": "Páginas Web",
+    "tipo": "link",
+    "url": "https://github.com",
+    "imagen": "assets/entornos/sala-informatica.jpg",
+    "descripcion": "Sitio web interactivo con diseño responsive y base de datos desarrollado en el trayecto web.",
+    "color": "#087C99"
+  }
+]
